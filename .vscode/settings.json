@@ -1,3 +1,14 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "mlx.h": "c",
+        "libft.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/dwulfe/my_cub3d/render",
+            "binaryPath": "/Users/dwulfe/my_cub3d/render/render",
+            "binaryArgs": []
+        }
+    ]
 }

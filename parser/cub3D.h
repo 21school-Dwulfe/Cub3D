@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/01/29 17:40:33 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include "./Libft/libft.h"
-# include "./minilibx_mms/mlx.h"
+
+# include "../libs/include.h"
 
 # define WIN_X 1024
 # define WIN_Y 768
@@ -91,7 +91,6 @@ typedef struct s_data
 }	t_data;
 
 int		get_next_line(int fd, char **line, int ret);
-int		ft_strcmp(char *str1, char *str2);
 int		ft_atoi_rgb(char *str);
 void	ft_error(int key);
 

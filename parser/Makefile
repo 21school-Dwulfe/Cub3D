@@ -8,13 +8,13 @@ OBJS		= $(SRCS:.c=.o)
 
 #BOBJS		= $(BSRCS:.c=.o) //bonus part
 
-LIBDIR		= Libft
+LIBDIR		= ../libs/libft
 
 LIBFT_LIB	= $(LIBDIR)/libft.a
 
 LIB			= -L$(LIBDIR) -lft
 
-MLXDIR		= minilibx_mms
+MLXDIR		= ../libs/minilibx_mms
 
 MLX			= $(MLXDIR)/libmlx.dylib
 
@@ -29,17 +29,10 @@ CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
 
 
-
 %.o: %.c	Makefile cub3D.h
 			$(CC) $(CFLAGS)  $(LIBDIR)  -c $< -o $@
 
-debug :	$(LIBFT_LIB) $(OBJS) $(MLX)  main.c
-		$(CC) $(CFLAGS) $(LIBDIR) main.c -o main.o
-		$(CC) $(CFLAGS) $(LIBDIR) $(OBJS) \
-		main.o -g -fsanitize=address -o $(NAME) $(LIB) $(MLX_START)
-
-$(NAME):	$(OBJS) 
-			ar x 
+$(NAME):	$(OBJS)
 			ar rcs $(NAME) $?
 
 all:		$(NAME)
@@ -47,23 +40,20 @@ all:		$(NAME)
 $(LIBFT_LIB):	tools ;
 
 tools:
-			make -C $(LIBDIR)
-
-$(MLX):		tools2 ;
-
-tools2:
-			$(MAKE) -C $(MLXDIR)
+		make -C $(LIBDIR)
 
 clean:
-			$(MAKE) clean -C $(LIBDIR) 
-			$(MAKE) clean -C $(MLXDIR)
-			$(RM) $(OBJS) $(BOBJS)
+		$(RM) $(OBJS) $(BOBJS)
 
 fclean:		clean
-			make fclean -C $(LIBDIR)
-			$(RM) $(NAME) $(MLX)
+			$(RM) $(NAME)
 
 re:			fclean all
+
+debug :	$(LIBFT_LIB) $(OBJS) $(MLX)  main.c
+		$(CC) $(CFLAGS) $(LIBDIR) main.c -o main.o
+		$(CC) $(CFLAGS) $(LIBDIR) $(OBJS) \
+		main.o -g -fsanitize=address -o $(NAME) $(LIB) $(MLX_START)
 
 .PHONY:		all clean fclean re tools tools2 debug
 

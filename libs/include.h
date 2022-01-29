@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   funcs.c                                            :+:      :+:    :+:   */
+/*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/01/29 17:40:45 by dwulfe           ###   ########.fr       */
+/*   Created: 2022/01/29 17:28:39 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/01/29 17:39:26 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef INCLUDE_H
+# define INCLUDE_H
 
-int	ft_atoi_rgb(char *str)
-{
-	int		res;
-	int		i;
+# ifdef __APPLE__
+# include "./minilibx_mms/mlx.h"
+# elif __linux__
+# include "./minilibx-linux-master/mlx.h"
+# endif
 
-	i = 0;
-	res = 0;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			while (str[i] >= '0' && str[i] <= '9')
-			{
-				res = ((res * 10) + (str[i] - '0'));
-				if (res > 255 || res < 0)
-					ft_error(DATA_ERROR);
-				i++;
-			}
-		}
-		else
-			ft_error(DATA_ERROR);
-	}
-	return (res);
-}
+# include "./libft/libft.h"
+
+#endif

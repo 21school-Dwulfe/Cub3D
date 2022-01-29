@@ -1,5 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/dwulfe/my_cub3d'
-gcc  -o Cub3d
-make: Leaving directory `/Users/dwulfe/my_cub3d'
- 

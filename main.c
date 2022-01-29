@@ -6,13 +6,16 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 14:49:26 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/01/29 14:53:36 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/01/29 18:20:36 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/main.h"
 
-int	main(int argc, char **argv, char *env)
+int	main(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
+	(void)env;
 	return (0);
 }
