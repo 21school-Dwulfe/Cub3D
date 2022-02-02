@@ -1,48 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/18 10:31:57 by dwulfe            #+#    #+#             */
-/*   Updated: 2021/04/26 21:18:02 by dwulfe           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static void	ft_neg(const char *nptr, size_t *i, int *is_neg)
+int	ft_atoi(const char *str)
 {
-	if (nptr[*i] == '-')
-	{
-		*is_neg *= -1;
-		*i = *i + 1;
-	}
-	else if (nptr[*i] == '+')
-		*i = *i + 1;
-}
+	long	res;
+	long	sign;
+	int		i;
 
-int	ft_atoi(const char *nptr)
-{
-	size_t		i;
-	int			is_neg;
-	int			res;
-
-	i = 0;
-	is_neg = 1;
 	res = 0;
-	while (ft_isspace(nptr[i]))
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 8 && str[i] <= 13))
 		i++;
-	ft_neg(nptr, &i, &is_neg);
-	while (ft_isdigit(nptr[i]))
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (res > INT_MAX / 10)
-			return (-1);
-		else if (res < INT_MIN / 10)
-			return (0);
-		res = res * 10 + is_neg * (nptr[i] - '0');
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (res);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = ((res * 10) + (str[i] - '0'));
+		if (res > 2147483647 && sign == 1)
+			return (-1);
+		if (res > 2147483648 && sign == -1)
+			return (0);
+		i++;
+	}
+	return (res * sign);
 }

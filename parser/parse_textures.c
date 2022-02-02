@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:25:54 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void	get_texts(int *i, char *line, t_data *data, char *flag)
 			(*i)++;
 		else if (line[*i] == '.' && line[(*i) + 1] == '/')
 		{
-			if (!ft_strcmp(flag, "NO") && !data->txs->no)
+			if (!ft_strncmp(flag, "NO", 3) && !data->txs->no)
 				data->txs->no = get_str_texs(line, i);
-			else if (!ft_strcmp(flag, "SO") && !data->txs->so)
+			else if (!ft_strncmp(flag, "SO", 3) && !data->txs->so)
 				data->txs->so = get_str_texs(line, i);
-			else if (!ft_strcmp(flag, "WE") && !data->txs->we)
+			else if (!ft_strncmp(flag, "WE", 3) && !data->txs->we)
 				data->txs->we = get_str_texs(line, i);
-			else if (!ft_strcmp(flag, "EA") && !data->txs->ea)
+			else if (!ft_strncmp(flag, "EA", 3) && !data->txs->ea)
 				data->txs->ea = get_str_texs(line, i);
 			break ;
 		}

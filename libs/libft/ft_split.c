@@ -1,88 +1,98 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 18:06:30 by dwulfe            #+#    #+#             */
-/*   Updated: 2021/11/30 18:06:30 by dwulfe           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static int	ft_str_quantity(char const *s1, char c)
-{
-	int	quant;
-	int	flag;
-
-	quant = 0;
-	flag = 0;
-	if (*s1 == '\0')
-		return (0);
-	while (*s1 != '\0')
-	{
-		if (*s1 == c)
-			flag = 0;
-		else if (flag == 0)
-		{
-			flag = 1;
-			quant++;
-		}
-		s1++;
-	}
-	return (quant);
-}
-
-static int	ft_ch_q(char const *s2, char c, int start_i)
-{
-	int	lenght;
-
-	lenght = 0;
-	while (s2[start_i] != c && s2[start_i] != '\0')
-	{
-		lenght++;
-		start_i++;
-	}
-	return (lenght);
-}
-
-static char	**ft_get(char const *s, char **dst, char c, int length)
+static int	words_count(char const *s, char c, int count)
 {
 	int	i;
-	int	s_counter;
-	int	char_i;
+	int	j;
 
 	i = 0;
-	s_counter = 0;
-	while (s[i] != '\0' && s_counter < length)
+	j = 1;
+	while (s[i] != '\0')
 	{
-		char_i = 0;
-		while (s[i] == c)
-			i++;
-		dst[s_counter] = (char *)malloc(sizeof(char) * ft_ch_q(s, c, i) + 1);
-		if (!dst[s_counter])
-			return (ft_arrstr_del((char **)dst, s_counter));
-		while (s[i] != '\0' && s[i] != c)
-			dst[s_counter][char_i++] = s[i++];
-		dst[s_counter][char_i] = '\0';
-		s_counter++;
+		if (s[i] == c)
+			j = 1;
+		if (s[i] != c && j == 1)
+		{
+			j = 0;
+			count++;
+		}
+		i++;
 	}
-	dst[s_counter] = (void *)0;
-	return (dst);
+	return (count);
+}
+
+static int	words_len(char const *s, char c)
+{
+	int	len;
+
+	len = 0;
+	if (s)
+	{
+		while (s[len] && s[len] != c)
+			len++;
+	}
+	return (len);
+}
+
+static void	*mem_cleaner(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
+
+static char	*make_str(const char *s, char c, int *i)
+{
+	int		j;
+	char	*res;
+	int		len;
+
+	j = 0;
+	while (s[*i] && s[*i] == c)
+		*i = *i + 1;
+	len = words_len(s + *i, c);
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (s[*i] != '\0' && s[*i] != c)
+	{
+		res[j] = s[*i];
+		j++;
+		*i = *i + 1;
+	}
+	res[j] = '\0';
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**dst;
-	int		length;
+	char	**arr;
+	int		count;
+	int		i;
+	int		j;
 
+	i = 0;
 	if (!s)
 		return (NULL);
-	length = ft_str_quantity(s, c);
-	dst = (char **)malloc(sizeof(char *) * (length + 1));
-	if (!dst)
+	count = words_count(s, c, 0);
+	arr = (char **)malloc((count + 1) * sizeof(char *));
+	if (!arr)
 		return (NULL);
-	return (ft_get(s, dst, c, length));
+	j = 0;
+	while (i < count)
+	{
+		arr[i] = make_str(s, c, &j);
+		if (!arr[i])
+			return (mem_cleaner(arr));
+		i++;
+	}
+	arr[i] = NULL;
+	return (arr);
 }

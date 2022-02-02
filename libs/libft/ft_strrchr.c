@@ -1,26 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/18 18:09:06 by dwulfe            #+#    #+#             */
-/*   Updated: 2021/04/26 21:23:04 by dwulfe           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i])
 		i++;
-	if (c == '\0')
-		return ((char *)s + i);
-	while (i--)
-		if (s[i] == c)
-			return ((char *)s + i);
-	return ((void *)0);
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i--;
+	}
+	return (NULL);
 }

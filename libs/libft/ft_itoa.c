@@ -1,63 +1,50 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 20:05:43 by dwulfe            #+#    #+#             */
-/*   Updated: 2021/04/23 20:05:43 by dwulfe           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static void	ft_getstr(int *length, int *tmp, int *n, char **str)
+static long	len_number(long n)
 {
-	int	i;
+	long	i;
 
-	if (*n < 0)
-	{
-		str[0][0] = '-';
-		*n = -(*n);
+	i = 0;
+	if (n == 0)
 		i = 1;
-	}
-	else
-		i = 0;
-	while (*length)
+	if (n < 0)
 	{
-		*tmp = *n / *length;
-		str[0][i] = '0' + *tmp;
-		*n %= *length;
-		*length /= 10;
+		i += 1;
+		n = -n;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
 		i++;
 	}
-	str[0][i] = '\0';
-}		
+	return (i);
+}
 
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		length;
-	int		tmp;
-	int		j;
+	long	len;
+	long	i;
 
-	j = 1;
-	tmp = n / 10;
-	length = 1;
-	if (n < 0)
-		j = 2;
-	while (tmp)
-	{
-		j++;
-		length *= 10;
-		tmp /= 10;
-	}
-	if ((long)n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	str = (char *)malloc(sizeof(char) * j + 1);
+	i = n;
+	len = len_number(i);
+	str = (char *) malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	ft_getstr(&length, &tmp, &n, &str);
+	str[len] = '\0';
+	if (i == 0)
+		str[0] = '0';
+	if (i < 0)
+	{
+		str[0] = '-';
+		i = -i;
+	}
+	len = len - 1;
+	while (i > 0)
+	{
+		str[len] = (i % 10) + 48;
+		i = i / 10;
+		len--;
+	}
 	return (str);
 }
