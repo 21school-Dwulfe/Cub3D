@@ -3,7 +3,18 @@
     "files.associations": {
         "mlx.h": "c",
         "libft.h": "c",
-        "cub3d.h": "c"
+        "cub3d.h": "c",
+        "ios": "c",
+        "main.h": "c",
+        "render.h": "c",
+        "array": "c",
+        "iterator": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c",
+        "istream": "c",
+        "locale": "c",
+        "ostream": "c"
     },
     "makefile.launchConfigurations": [
         {

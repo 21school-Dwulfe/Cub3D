@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:52:05 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	get_char(char c, t_data *data, int i, int j)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' )
-		data->params->pos++;
+		data->params->pos += c;
 	else if (c == 'C')
 		data->params->coin++;
 	else if (c == 'X')

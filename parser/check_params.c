@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:51:30 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	check_params(t_data *data, char **file)
 	j = 0;
 	i = -1;
 	parse_file(data, file, &i, &j);
-	if (data->params->pos != 1)
+	if (data->params->pos != 'N' && data->params->pos != 'S'
+		&& data->params->pos != 'W' && data->params->pos != 'E')
 		ft_error(DATA_ERROR);
 	return (0);
 }
@@ -41,5 +42,7 @@ int	collect_all(t_data *data)
 	if (data->colors->floor && data->colors->cell && data->txs->no
 		&& data->txs->ea && data->txs->so && data->txs->we && data->map)
 		return (0);
+	else if (data->map)
+		ft_error(FILE_ERROR);
 	return (1);
 }

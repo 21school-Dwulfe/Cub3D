@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/03 13:17:29 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	get_map(int i, int j, char **file, t_data *data)
 		++size;
 	map = malloc(sizeof(char *) * (size + 1));
 	i -= size + 1;
-	max_len = (int)ft_strlen(file[i]);
+	max_len = (int)ft_strlen(file[0]);
 	while (file[++i])
 	{
 		map[++j] = ft_strdup(file[i]);

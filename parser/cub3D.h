@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/01/29 17:40:33 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/03 17:29:42 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	init_params(t_params **params);
 int		check_params(t_data *data, char **file);
 int		collect_all(t_data *data);
 
+void	parse(t_data *data, char *argv);
 void	parse_file(t_data *data, char **file, int *i, int *j);
 int		find_map(int *i, char **file, t_data *data);
 void	check_r_map(char **map, int size, int len);

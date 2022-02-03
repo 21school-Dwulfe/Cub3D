@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/03 22:06:22 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	parse(t_data *data, char *argv)
 	i = 0;
 	out = 1;
 	size = file_size(out, argv);
-	file = malloc(sizeof(char *) * (size + 1));
+	file = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!file)
 		ft_error(MALLOC_ERROR);
 	fd = open(argv, O_RDONLY);
@@ -61,24 +61,24 @@ void	parse(t_data *data, char *argv)
 	close(fd);
 }
 
-int	main(int argc, char **argv)
-{
-	t_colors	*colors;
-	t_data		*data;
-	t_txs		*txs;
+// int	main(int argc, char **argv)
+// {
+// 	t_colors	*colors;
+// 	t_data		*data;
+// 	t_txs		*txs;
 
-	data = NULL;
-	txs = NULL;
-	colors = NULL;
-	init(&data, &txs, &colors);
-	if (argc == 2)
-	{
-		if (check(argv[1]))
-			ft_error(COMMON_ERROR);
-		parse(data, argv[1]);
-		run(data);
-	}
-	else
-		ft_error(COMMON_ERROR);
-	return (0);
-}
+// 	data = NULL;
+// 	txs = NULL;
+// 	colors = NULL;
+// 	init(&data, &txs, &colors);
+// 	if (argc == 2)
+// 	{
+// 		if (check(argv[1]))
+// 			ft_error(COMMON_ERROR);
+// 		parse(data, argv[1]);
+// 		run(data);
+// 	}
+// 	else
+// 		ft_error(COMMON_ERROR);
+// 	return (0);
+// }

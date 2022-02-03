@@ -1,66 +1,76 @@
 APP 			= Cub3d
 
 SYSTEM 			:= $(shell uname)
+SRCDIR 			:= ./render/srcs/
+OBJDIR 			:= ./objs/
+HEADERDIR		:= includes
+PWD				:= $(shell pwd)
 
-ifeq ($(SYSTEM), Linux)
-	MAKE		= make
-endif
+SRCS 			:= $(shell find $(SRCDIR) -name '*.c')
+OBJS			:= ${addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o))}
+HEADERS			:= ${shell find ./libs -name '*.h'}
+SYSTEM			=  $(shell uname)
 
 CFLAGS			= -Wall -Wextra -Werror
-DEBUG			= -g
+DEBUG			= -g -fsanitize=address
 OPTIM			= -O2
 INCLUDES		= -I./includes
 CC				= gcc
-LIBS			= -L./libs/libft -lft
-#LIBS			+= -L./libst/minilibx-linux-master -l
+MLXLIB			= -lmlx -framework OpenGL -framework AppKit
+LIB				= -L./libs/Libft -lft
+PARSERLIB		= -L./parser/ -lparser
+MAIN			= ./objs/main.o
 
-%.o : %.c 
-		$(CC) $(LIBS) $(DEBUG) $(OPTIM) $(INCLUDES) $(CFLAGS) -c $< -o $@
+$(OBJDIR)%.o : $(SRCDIR)%.c
+		$(CC) $(CFLAGS) -g -DPWD="\"$(shell pwd)\"" -c $< -o $@
 
-${APP}	: Makefile $(HEADERS) create main.c main.o
-		$(CC) main.o  -o $(APP)
+${APP} 	: Makefile buildrepo $(LIB) $(MLX) $(PARSERLIB) $(MAIN) $(OBJS)
+		$(CC) $(CFLAGS) $(DEBUG) $(PARSERLIB) $(MLXLIB) $(LIB) $(MAIN) $(OBJS) -o $(APP)
 
-all		: $(APP)
+all : $(APP)
 
-#	$(MAKE) -C  ./render
-create 	: 
-		$(CC) -c main.c -o main.o
-		$(MAKE) -C  ./parser
-		$(MAKE) -C  ./libs/libft
-# ifeq ($(SYSTEM), Linux)
-# 	$(MAKE) -C  ./libs/minilibx-linux-master
-# endif
-# ifeq ($(SYSTEM), Darwin)
-# 	$(MAKE) -C  ./libs/minilibx_mms
-# endif
+print : 
+	echo $(OBJS)
 
-#	$(MAKE) clean -C  ./render
+buildrepo :
+		mkdir -p  $(OBJDIR)
+
+$(MLX) :
+	cd $(MLXDIR) && $(MAKE)
+
+$(PARSERLIB):
+	$(MAKE) lib -C ./parser
+
+$(LIB) :
+	$(MAKE) -C ./libs/Libft
+
+$(MAIN) :
+	$(CC) $(CFLAGS) -c main.c -o $(MAIN)
+	
+# clean:
+# 			$(MAKE) clean -C $(LIBDIR) $(MLXDIR)
+# 			$(RM) $(OBJS) $(BOBJS)
+
+# fclean:		clean
+# 			make fclean -C $(LIBDIR).PHONY: all clean fclean re bonus buildrepo
+# 			$(RM) $(NAME) $(MLX)
+
+re:			fclean all
+
+# create 	: 
+# $(MAKE) lib -C  ./parser
+# $(MAKE) -C  ./libs/minilibx_mms
+# $(MAKE) -C  ./libs/libft
 clean	:
-		$(MAKE) clean -C  ./parser
-		$(MAKE) clean -C  ./libs/Libft
-		$(MAKE) clean -C  ./libs/dwulfe
-# ifeq ($(SYSTEM), Linux)
-# 	$(MAKE) clean -C  ./libs/minilibx-linux-master
-# endif
-# ifeq ($(SYSTEM), Darwin)
-# 	$(MAKE) clean -C  ./libs/minilibx_mms
-# endif
+	$(MAKE) clean -C  ./parser
+	$(MAKE) clean -C  ./libs/Libft
+	$(MAKE) clean -C  ./libs/minilibx_mms
 
 fclean	:
 		rm -rf $(APP)
+		rm -rf $(OBJDIR)
 		$(MAKE) fclean -C  ./parser
-		$(MAKE) fclean -C  ./render
 		$(MAKE) fclean -C  ./libs/Libft
-		$(MAKE) fclean -C  ./libs/dwulfe
-		ifeq ($(SYSTEM), Linux)
-			$(MAKE) fclean -C  ./libs/minilibx-linux-master
-		endif
-		ifeq ($(SYSTEM), Darwin)
-			$(MAKE) fclean -C  ./libs/minilibx_mms
-		endif
 
 .PHONY	: all clean fclean re bonus buildrepo print create
-
-print	:
-		echo $(HEADERS)
 	

@@ -8,17 +8,17 @@ LIBFT_LIB	= $(LIBDIR)/libft.a
 LIB			= -L$(LIBDIR) -lft
 MLXDIR		= ../libs/minilibx_mms
 MLX			= $(MLXDIR)/libmlx.dylib
-MLX_START	= -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit
-NAME		= cub3D_parsing.a
+MLX_START	= -lmlx -framework OpenGL -framework AppKit
+NAME		= libparser.a
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra #-I
+CFLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
 
 %.o: %.c	Makefile cub3D.h
-			$(CC) $(CFLAGS) -g -c $< -o $@
-
-$(NAME):	$(OBJS)
-			ar rcs $(NAME) $?
+			$(CC) -DPWD="\"$(shell pwd)\"" -g -c $< -o $@
+ 
+$(NAME):	$(LIBFT_LIB) $(MLX) $(OBJS)
+		$(CC) $(CFLAGS) -g -fsanitize=address  $(MLX_START) $(LIB) $(OBJS) -o parser 
 
 all:		$(NAME)
 
@@ -36,11 +36,10 @@ fclean:		clean
 
 re:			fclean all
 
-# debug : $(LIBFT_LIB) $(MLX)  $(OBJS)   
-# 		$(CC) $(CFLAGS) $(MLX_START) $(LIB) $(OBJS) -g -o parser 
 print :
 	echo $(SRCS)
-debug : $(LIBFT_LIB) $(MLX) $(OBJS)
-		$(CC) $(MLX_START) $(CFLAGS) -g -fsanitize=address $(LIB) $(OBJS) -o parser 
+	
+lib  :$(OBJS)
+			ar rcs libparser.a $?
 
-.PHONY:		all clean fclean re tools tools2 debug print
+.PHONY:		all clean fclean re tools tools2 lib print

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:54:26 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_params(t_params **params)
 
 void	rgb_init(t_rgb **rgb)
 {
-	*rgb = malloc(sizeof(t_rgb));
+	*rgb = (t_rgb *)malloc(sizeof(t_rgb));
 	if (!rgb)
 		ft_error(MALLOC_ERROR);
 	(*rgb)->r = -1;
@@ -35,27 +35,14 @@ void	rgb_init(t_rgb **rgb)
 	(*rgb)->b = -1;
 }
 
-void	mlx_data_init(t_data *data)
-{
-	int		h;
-	int		w;
-
-	h = 0;
-	w = 0;
-	data->mlx = mlx_init();
-	data->mlx_win = mlx_new_window(data->mlx, WIN_X, WIN_Y, "Cub3D");
-	data->mlx_image = mlx_xpm_file_to_image(data->mlx, "/Users/ebalgruu/Desktop/21/cub3D/cub3D/images/wall.xpm", &h, &w);
-	data->coin = mlx_xpm_file_to_image(data->mlx, "/Users/ebalgruu/Desktop/21/cub3D/cub3D/images/coin.xpm", &h, &w);
-}
-
 void	init(t_data **data, t_txs **txs, t_colors **colors)
 {
 	t_params	*params;
 
 	params = NULL;
-	*data = malloc(sizeof(t_data));
-	*txs = malloc(sizeof(t_txs));
-	*colors = malloc(sizeof(t_colors));
+	*data = (t_data *)malloc(sizeof(t_data));
+	*txs = (t_txs *)malloc(sizeof(t_txs));
+	*colors = (t_colors *)malloc(sizeof(t_colors));
 	if (!data || !txs || !colors)
 		ft_error(MALLOC_ERROR);
 	(*data)->params = params;
