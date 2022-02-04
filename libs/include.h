@@ -6,14 +6,14 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:28:39 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/03 14:32:29 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/04 13:45:32 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# include "./Libft/libft.h"
+# include "./libft/libft.h"
 # include "/usr/local/include/mlx.h"
 
 #endif
