@@ -37,28 +37,42 @@ void	drawing_map(t_data *data, int x, int y)
 {
 	int		i;
 	int		j;
+	int 	k;
+	int		l;
 
+	l = -20;
+	k = -20;
 	i = -1;
-	y = data->params->x * -15;
+	y = data->params->x * -10;
 	while (data->map[++i])
 	{
-		x = data->params->y * -15;
+		x = data->params->y * -10;
 		j = -1;
 		while (data->map[i][++j])
 		{
-			if (data->map[i][j] == '1')
+			if (data->map[i][j] == '1' && x < 300 && y < 200)
 				mlx_put_image_to_window(data->mlx, data->mlx_win, \
 										data->mlx_image, x, y);
-			if (data->map[i][j] == 'N' || data->map[i][j] == 'W'
-				|| data->map[i][j] == 'S' || data->map[i][j] == 'E')
+			if ((data->map[i][j] == 'N' || data->map[i][j] == 'W'
+				 || data->map[i][j] == 'S' || data->map[i][j] == 'E')  && x < 300 && y < 200)
 				mlx_put_image_to_window(data->mlx, data->mlx_win, \
 										data->coin, x, y);
-			if (data->map[i][j] == 'C')
+			if (data->map[i][j] == 'C' && x < 300 && y < 200)
 				mlx_put_image_to_window(data->mlx, data->mlx_win, \
 										data->coin, x, y);
 			x += 20;
 		}
 		y += 20;
+	}
+	while (k < 300)
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+								data->mlx_image, k += 20, 200);
+	}
+	while (l < 200)
+	{
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+								data->mlx_image, 300, l += 20);
 	}
 }
 
