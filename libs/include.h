@@ -13,7 +13,7 @@
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# include "./Libft/libft.h"
+# include "./libft/libft.h"
 # include "/usr/local/include/mlx.h"
 
 #endif
