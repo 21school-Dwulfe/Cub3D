@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   include.h                                          :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 17:28:39 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/05 20:20:47 by dwulfe           ###   ########.fr       */
+/*   Created: 2022/01/29 14:50:48 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/05 20:15:48 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDE_H
-# define INCLUDE_H
+#ifndef MAIN_H
+# define MAIN_H
 
-# include "./libft/libft.h"
-# include "./minilibx_opengl/mlx.h"
-# include <math.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
+# include "../parser/cub3D.h"
+# include "../render/render.h"
+# include "./structures.h"
 
 #endif

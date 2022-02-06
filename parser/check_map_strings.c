@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_strings.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebalgruu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2021/12/19 13:40:49 by ebalgruu         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:02:06 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	check_string(char *str, int j, t_data *data)
+int	check_string(char *str, int y, t_data *data)
 {
-	int	i;
+	int	x;
 
-	i = 0;
-	while (str[i])
+	x = 0;
+	while (str[x])
 	{
-		if (str[i] == '1' || str[i] == '0' || str[i] == 'N' || str[i] == 'S'
-			|| str[i] == 'E' || str[i] == 'W' || str[i] == 'C' || str[i] == 'X')
-			get_char(str[i], data, j, i);
-		i++;
+		if (str[x] == '1' || str[x] == '0' || str[x] == 'N' || str[x] == 'S'
+			|| str[x] == 'E' || str[x] == 'W' || str[x] == 'C' || str[x] == 'X')
+			get_char(str[x], data, x, y);
+		x++;
 	}
 	return (0);
 }

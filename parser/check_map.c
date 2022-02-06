@@ -6,13 +6,13 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 20:52:05 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/05 18:00:03 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	get_char(char c, t_data *data, int i, int j)
+void	get_char(char c, t_data *data, int x, int y)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' )
 		data->params->pos += c;
@@ -24,13 +24,13 @@ void	get_char(char c, t_data *data, int i, int j)
 		return ;
 	if (data->params->pos)
 	{
-		data->params->x = i;
-		data->params->y = j;
+		data->params->x = x;
+		data->params->y = y;
 	}
 	else if (data->params->coin)
 	{
-		data->params->coin_pos_x = i;
-		data->params->coin_pos_y = j;
+		data->params->coin_pos_x = x;
+		data->params->coin_pos_y = y;
 	}
 }
 

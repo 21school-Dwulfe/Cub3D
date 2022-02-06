@@ -16,13 +16,14 @@ DEBUG			= -g -fsanitize=address
 OPTIM			= -O2
 INCLUDES		= -I./includes
 CC				= gcc
-MLXLIB			= -lmlx -framework OpenGL -framework AppKit
+MLXLIB			= -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit
 LIB				= -L./libs/Libft -lft
 PARSERLIB		= -L./parser/ -lparser
+MLXDIR			= ./libs/minilibx_mms/
 MAIN			= ./objs/main.o
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
-		$(CC) $(CFLAGS) -g -DPWD="\"$(shell pwd)\"" -c $< -o $@
+		$(CC) $(CFLAGS) -g -DPWD="\"$(shell pwd)\"" -DBONUS=0 -c $< -o $@
 
 ${APP} 	: Makefile buildrepo $(LIB) $(MLX) $(PARSERLIB) $(MAIN) $(OBJS)
 		$(CC) $(CFLAGS) $(DEBUG) $(PARSERLIB) $(MLXLIB) $(LIB) $(MAIN) $(OBJS) -o $(APP)
@@ -45,7 +46,7 @@ $(LIB) :
 	$(MAKE) -C ./libs/Libft
 
 $(MAIN) :
-	$(CC) $(CFLAGS) -c main.c -o $(MAIN)
+	$(CC) $(CFLAGS) -g -c main.c -o $(MAIN)
 	
 # clean:
 # 			$(MAKE) clean -C $(LIBDIR) $(MLXDIR)
@@ -64,13 +65,14 @@ re:			fclean all
 clean	:
 	$(MAKE) clean -C  ./parser
 	$(MAKE) clean -C  ./libs/Libft
-	$(MAKE) clean -C  ./libs/minilibx_mms
+	$(MAKE) clean -C  ./libs/minilibx_opengl
 
 fclean	:
 		rm -rf $(APP)
 		rm -rf $(OBJDIR)
 		$(MAKE) fclean -C  ./parser
 		$(MAKE) fclean -C  ./libs/Libft
+		$(MAKE) clean -C  ./libs/minilibx_opengl
 
 .PHONY	: all clean fclean re bonus buildrepo print create
 	

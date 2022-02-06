@@ -14,7 +14,8 @@
         "vector": "c",
         "istream": "c",
         "locale": "c",
-        "ostream": "c"
+        "ostream": "c",
+        "__node_handle": "c"
     },
     "makefile.launchConfigurations": [
         {

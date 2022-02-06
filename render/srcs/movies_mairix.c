@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   include.h                                          :+:      :+:    :+:   */
+/*   movies_mairix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 17:28:39 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/05 20:20:47 by dwulfe           ###   ########.fr       */
+/*   Created: 2022/02/05 17:18:47 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/06 15:56:24 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDE_H
-# define INCLUDE_H
+#include "../render.h"
 
-# include "./libft/libft.h"
-# include "./minilibx_opengl/mlx.h"
-# include <math.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
+void	ft_move_up_matrix(t_data *data)
+{
+    (void)data;
+}
 
-#endif
+void	ft_move_down_matrix(t_data *data)
+{
+	(void)data;
+}
+
+void	ft_move_left_matrix(t_data *data)
+{
+	(void)data;
+}
+
+void	ft_move_right_matrix(t_data *data)
+{
+	(void)data;
+}
+
+void	ft_rotate_left(t_data *data)
+{
+	(void)data;
+}
+
+void	ft_rotate_right(t_data *data)
+{
+	(void)data;
+}

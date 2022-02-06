@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   include.h                                          :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 17:28:39 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/05 20:20:47 by dwulfe           ###   ########.fr       */
+/*   Created: 2022/02/04 19:06:58 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/06 20:19:00 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDE_H
-# define INCLUDE_H
+#include "../render.h"
 
-# include "./libft/libft.h"
-# include "./minilibx_opengl/mlx.h"
-# include <math.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
-
-#endif
+void	draw(t_data *data)
+{
+	int y;
+	int x;
+	
+	x = 0;
+	y = 0;
+	while (y < WIN_Y)
+	{
+		x = 0;
+		while (x < WIN_X)
+		{
+			data->addr[y * WIN_X + x] = data->matrix[y * WIN_X + x]; 
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_image, 0, 0);
+}

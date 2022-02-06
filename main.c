@@ -6,11 +6,11 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:07:03 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/03 18:39:29 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/06 20:07:50 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "./includes/main.h"
 
 int	main(int argc, char **argv)
 {

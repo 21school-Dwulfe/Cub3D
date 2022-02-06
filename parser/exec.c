@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 22:06:22 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/06 20:10:38 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	file_size(int out, char *argv)
 
 	i = 0;
 	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		ft_error(READ_ERROR);
 	while (out)
 	{
 		out = get_next_line(fd, &line, 0);

@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 20:54:26 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/06 14:55:26 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init(t_data **data, t_txs **txs, t_colors **colors)
 		ft_error(MALLOC_ERROR);
 	(*data)->params = params;
 	(*data)->map = NULL;
-	(*data)->move = 0;
+	ft_bzero((*data)->keys, sizeof(int) * 512);
 	(*txs)->ea = NULL;
 	(*txs)->no = NULL;
 	(*txs)->so = NULL;
