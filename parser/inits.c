@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/06 14:55:26 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/07 19:13:09 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	init_params(t_params **params)
 	(*params)->coin = 0;
 	(*params)->pos = 0;
 	(*params)->enemy = 0;
-	(*params)->x = 0;
-	(*params)->y = 0;
+	(*params)->pos_x = 0;
+	(*params)->pos_y = 0;
 	(*params)->coin_pos_x = 0;
 	(*params)->coin_pos_y = 0;
 }

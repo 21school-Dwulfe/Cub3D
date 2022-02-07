@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 20:07:08 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/06 20:42:00 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/07 19:13:07 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_txs
 	char	*ea;
 }	t_txs;
 
-typedef struct s_wall
+typedef struct s_raycaster
 {
 	double	camera_x;
 	double	ray_dir_x;
@@ -85,14 +85,14 @@ typedef struct s_wall
 	int		color;
 	int		x;
 	int		y;
-}				t_wall;
+}				t_raycaster;
 
 
 typedef struct s_params
 {
 	int			pos;
-	int			x;
-	int			y;
+	int			pos_x;
+	int			pos_y;
 	double		dir_x;
 	double		dir_y;
 	double		plane_x;
@@ -107,21 +107,22 @@ typedef struct s_params
 
 typedef struct s_data
 {
-	void		*mlx; 					// ptr mlx
-	void		*mlx_win; 				// ptr win
-	void		*mlx_image;				// pointer image
-	int			*addr; 					// data array of colors in from matrix
-	int			matrix[WIN_X * WIN_Y];	// buffer matrix
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	int			keys[512];				// keys
-	char		**map;
-	int			loop_counter;
-	void		*coin;
-	t_txs		*txs;
-	t_colors	*colors;
-	t_params	*params;
-}				t_data;
+	void			*mlx; 					// ptr mlx
+	void			*mlx_win; 				// ptr win
+	void			*mlx_image;				// pointer image
+	int				*addr; 					// data array of colors in from matrix
+	int				matrix[WIN_X * WIN_Y];	// buffer matrix
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	t_raycaster		*rc;
+	int				keys[512];				// keys
+	char			**map;
+	int				loop_counter;
+	void			*coin;
+	t_txs			*txs;
+	t_colors		*colors;
+	t_params		*params;
+}					t_data;
 
 #endif

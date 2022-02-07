@@ -19,13 +19,13 @@ CC				= gcc
 MLXLIB			= -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit
 LIB				= -L./libs/Libft -lft
 PARSERLIB		= -L./parser/ -lparser
-MLXDIR			= ./libs/minilibx_mms/
+MLXDIR			= ./libs/minilibx_opengl/
 MAIN			= ./objs/main.o
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
 		$(CC) $(CFLAGS) -g -DPWD="\"$(shell pwd)\"" -DBONUS=0 -c $< -o $@
 
-${APP} 	: Makefile buildrepo $(LIB) $(MLX) $(PARSERLIB) $(MAIN) $(OBJS)
+${APP} 	: Makefile buildrepo $(LIB) $(MLXLIB) $(PARSERLIB) $(MAIN) $(OBJS)
 		$(CC) $(CFLAGS) $(DEBUG) $(PARSERLIB) $(MLXLIB) $(LIB) $(MAIN) $(OBJS) -o $(APP)
 
 all : $(APP)
@@ -36,7 +36,7 @@ print :
 buildrepo :
 		mkdir -p  $(OBJDIR)
 
-$(MLX) :
+$(MLXLIB) :
 	cd $(MLXDIR) && $(MAKE)
 
 $(PARSERLIB):

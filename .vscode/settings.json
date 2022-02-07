@@ -15,7 +15,22 @@
         "istream": "c",
         "locale": "c",
         "ostream": "c",
-        "__node_handle": "c"
+        "__node_handle": "c",
+        "__config": "cpp",
+        "__debug": "cpp",
+        "algorithm": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp",
+        "functional": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "sstream": "cpp",
+        "tuple": "cpp",
+        "unordered_map": "cpp",
+        "utility": "cpp",
+        "atomic": "cpp"
     },
     "makefile.launchConfigurations": [
         {
