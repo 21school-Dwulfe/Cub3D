@@ -16,23 +16,30 @@ void	floor_ceiling(t_data *d)
 {
 	int	y;
 	int	x;
+	(void)d;
+	// int	end;
 	int	floor;
 	int	ceiling;
-	int	end;
 
-	floor = create_trgb( \
-		0, d->colors->floor->r, d->colors->floor->g, d->colors->floor->b);
-	ceiling = create_trgb( \
-		0, d->colors->cell->r, d->colors->cell->g, d->colors->cell->b);
-	end = WIN_Y * WIN_X;
+	floor = create_trgb( 
+		d->parser->colors->floor->r,
+		d->parser->colors->floor->g,
+		d->parser->colors->floor->b);
+	ceiling = create_trgb( 
+		d->parser->colors->cell->r,
+		d->parser->colors->cell->g,
+		d->parser->colors->cell->b);
+	// end = WIN_Y * WIN_X;
 	y = WIN_Y / 2 - 1;
 	while (y < WIN_Y)
 	{
 		x = -1;
 		while (++x < WIN_X)
 		{
-			d->matrix[end - (y * WIN_X) - 1 + x] = ceiling;
-			d->matrix[y * WIN_X + x] = floor;
+			// d->matrix[end - (y * WIN_X) - 1 + x] = ceiling;
+			// d->matrix[y * WIN_X + x] = floor;
+			d->buff[WIN_Y- y - 1][x] = ceiling;
+			d->buff[y][x] = floor;
 		}
 		y++;
 	}

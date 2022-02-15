@@ -59,7 +59,7 @@ t_rgb	*make_colors(char **rgb_arr)
 	return (rgb);
 }
 
-void	get_colors(int *i, char *line, t_data *data, char flag)
+void	get_colors(int *i, char *line, t_parser *data, char flag)
 {
 	char	**rgb_arr;
 	int		j;

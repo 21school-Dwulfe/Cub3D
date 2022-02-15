@@ -20,42 +20,41 @@ int		get_next_line(int fd, char **line, int ret);
 int		ft_atoi_rgb(char *str);
 void	ft_error(int key);
 
-void	init(t_data **data, t_txs **txs, t_colors **colors);
-void	mlx_data_init(t_data *data);
+// void	init(t_parser **data, t_parser **parser, t_txs **txs, t_colors **colors);
+// void	mlx_data_init(t_parser *data);
 void	rgb_init(t_rgb **rgb);
-void	init_params(t_params **params);
+// void	init_params(t_params **params);
 
-int		check_params(t_data *data, char **file);
-int		collect_all(t_data *data);
+int		check_params(t_parser *data, char **file);
+int		collect_all(t_parser *data);
 
-void	parse(t_data *data, char *argv);
-void	parse_file(t_data *data, char **file, int *i, int *j);
-int		find_map(int *i, char **file, t_data *data);
+void    parse(t_parser *data, char *argv);
+void	parse_file(t_parser *data, char **file, int *i, int *j);
+int		find_map(int *i, char **file, t_parser *data);
 void	check_r_map(char **map, int size, int len);
-char	**check_map(char **map, t_data *data, int size, int len);
+char	**check_map(char **map, t_parser *data, int size, int len);
 int		check(char *filename);
 int		check_walls(char *str, int i);
-int		check_string(char *str, int j, t_data *data);
-void	get_char(char c, t_data *data, int x, int y);
+int		check_string(char *str, int j, t_parser *data);
+void	get_char(char c, t_parser *data, int x, int y);
 
-void	get_texts(int *i, char *line, t_data *data, char *flag);
+void	get_texts(int *i, char *line, t_parser *data, char *flag);
 t_rgb	*make_colors(char **arr);
 
-int		ft_close(t_data *data);
 void	free_map(char **map);
 void	ft_error(int key);
 void	if_space(char *str, int *i);
 
-void	run(t_data *data);
+void	run(t_parser *data);
 
-void	player_move_draw(t_data *data);
-void	ft_move_up(t_data *data);
-void	ft_move_down(t_data *data);
-void	ft_move_left(t_data *data);
-void	ft_move_right(t_data *data);
-void	get_colors(int *i, char *line, t_data *data, char flag);
+void	player_move_draw(t_parser *data);
+void	ft_move_up(t_parser *data);
+void	ft_move_down(t_parser *data);
+void	ft_move_left(t_parser *data);
+void	ft_move_right(t_parser *data);
+void	get_colors(int *i, char *line, t_parser *data, char flag);
 
-void	get_move_from_key(t_data *data);
-void	coin_animations(t_data *data);
+void	get_move_from_key(t_parser *data);
+void	coin_animations(t_parser *data);
 
 #endif

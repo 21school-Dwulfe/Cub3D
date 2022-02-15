@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-int	check_string(char *str, int y, t_data *data)
+int	check_string(char *str, int y, t_parser *data)
 {
 	int	x;
 
@@ -101,6 +101,7 @@ int	check_walls(char *str, int i)
 			i++;
 	}
 	tmp = ft_substr(str, i, len - i);
+	//printf("%s\n", tmp);
 	if (!tmp)
 		ft_error(MALLOC_ERROR);
 	check_holes(tmp);

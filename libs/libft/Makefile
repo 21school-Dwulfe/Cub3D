@@ -50,7 +50,7 @@ OBJ_B = $(patsubst %.c,%.o,$(LIST_B))
 
 D_FILES = $(patsubst %.c, %.d,$(LIST) $(LIST_B))
 
-OPTFLAGS = -O2
+OPTFLAGS = 
 FLAGS = -Wall -Wextra -Werror
 
 all	: $(NAME)

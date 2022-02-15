@@ -14,6 +14,7 @@
 
 void	draw(t_data *data)
 {
+	(void)data;
 	int y;
 	int x;
 	
@@ -24,10 +25,11 @@ void	draw(t_data *data)
 		x = 0;
 		while (x < WIN_X)
 		{
-			data->addr[y * WIN_X + x] = data->matrix[y * WIN_X + x]; 
+			data->mlx_image->addr[y * WIN_X + x] = data->buff[y][x]; 
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_image, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_image->img, 0, 0);
 }
+

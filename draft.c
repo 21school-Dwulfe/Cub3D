@@ -238,3 +238,35 @@ void	get_move_from_key(t_data *data)
 		ft_rotate_right(data);
 	data->move = 999;
 }
+
+
+
+void	vert_line(t_data *info, int x, int *y2, int color)
+{
+	int	y;
+
+	y = y2[0];
+	while (y <= y2[1])
+	{
+		mlx_pixel_put(info->mlx, info->mlx_win, x, y, color);
+		y++;
+	}
+}
+
+void	matrix_vert_line(t_data *data, int *y2, t_rgb *c)
+{
+	int	i;
+	int	j;
+
+	i = y2[0];
+	j = y2[1] * WIN_X;
+	while (i < WIN_Y * WIN_X && i <= j)
+	{
+		if (data->matrix[i] <= j)
+		{
+			data->matrix[i] = create_trgb(c->r, c->g, c->b);
+		}
+		i += WIN_X;
+	}
+}
+

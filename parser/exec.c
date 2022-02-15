@@ -35,7 +35,7 @@ int	file_size(int out, char *argv)
 	return (i);
 }
 
-void	parse(t_data *data, char *argv)
+void	parse(t_parser *data, char *argv)
 {
 	int		i;
 	int		fd;
