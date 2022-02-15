@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:07:38 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/06 19:18:43 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/15 14:44:50 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libs/include.h"
 # include "../parser/cub3D.h"
 # include "../includes/structures.h"
+
 
 void	render_init(t_data *data);
 int		render(t_data *data);

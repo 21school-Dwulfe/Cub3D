@@ -1,9 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 14:16:04 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/15 14:25:51 by dwulfe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
 # include "../libs/include.h"
 # include "../includes/structures.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
 
 int		get_next_line(int fd, char **line, int ret);
 int		ft_atoi_rgb(char *str);
@@ -17,7 +32,7 @@ void	rgb_init(t_rgb **rgb);
 int		check_params(t_parser *data, char **file);
 int		collect_all(t_parser *data);
 
-void    parse(t_parser *data, char *argv);
+void	parse(t_parser *data, char *argv);
 void	parse_file(t_parser *data, char **file, int *i, int *j);
 int		find_map(int *i, char **file, t_parser *data);
 void	check_r_map(char **map, int size, int len);

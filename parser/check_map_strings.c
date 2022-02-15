@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/05 18:02:06 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/15 14:43:53 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	check_walls(char *str, int i)
 			i++;
 	}
 	tmp = ft_substr(str, i, len - i);
-	//printf("%s\n", tmp);
+	printf("%s\n", tmp);
 	if (!tmp)
 		ft_error(MALLOC_ERROR);
 	check_holes(tmp);

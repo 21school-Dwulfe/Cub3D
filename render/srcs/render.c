@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 23:16:32 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/06 20:39:34 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/15 14:40:18 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ void	raycasting_init(t_data *d, t_raycaster *rc)
 	d->rc->dir_y = 0.0;
 	d->rc->plane_x = 0.0;
 	d->rc->plane_y = 0.66;
-	d->rc->move_speed = 0.03;
-	d->rc->rot_speed = 0.02;
+	d->rc->move_speed =0.06; //MOVE_SPEED;// ;
+	d->rc->rot_speed = 0.04;//RATATION_SPEED; //
 	d->rc->map = malloc(sizeof(int *) * 24);
 	
 	for (int i = 0; i < 24; i++)
