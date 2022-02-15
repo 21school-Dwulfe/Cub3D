@@ -30,18 +30,3 @@ git commit -m 'Added my project'
 git remote add origin git@github.com:sammy/my-new-project.git
 git push -u -f origin master
 
-3) How to delete submodule
-
-- git submodule deinit the_submodule
-- gitmodules file (Delete the relevant section from the)
-- git add .gitmodules (Stage the .gitmodules changes)
-- Delete the relevant section from .git/config.
-- Run git rm --cached path_to_submodule (no trailing slash).
-- Run rm -rf .git/modules/path_to_submodule
-- Commit git commit -m "Removed submodule <name>"
-- Delete the now untracked submodule files
-- rm -rf path_to_submodule
-
-4) How to create branch  on local repo && remote repository 
-- git branch <new_branch_name>
-- git push origin -u <new_branch_name> (-u copy current workflow state in new branch)

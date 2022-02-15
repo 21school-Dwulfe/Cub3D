@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_keys.c                                         :+:      :+:    :+:   */
+/*   colors_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 20:56:13 by dwulfe           ###   ########.fr       */
+/*   Created: 2022/02/04 19:34:02 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/04 19:41:05 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../render.h"
 
-void	get_move_from_key(t_data *data)
+int	get_t(int trgb)
 {
-	player_move_draw(data);
-	if (data->move == D)
-	{
-		ft_move_right(data);
-		data->move = 999;
-	}
-	else if (data->move == A)
-	{
-		ft_move_left(data);
-		data->move = 999;
-	}
-	else if (data->move == W)
-	{
-		ft_move_up(data);
-		data->move = 999;
-	}
-	else if (data->move == S)
-	{
-		ft_move_down(data);
-		data->move = 999;
-	}
+	return ((trgb >> 24) & 0xFF);
+}
+
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
+
+int	get_g(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
+
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
+}
+
+//t << 24 |
+int	create_trgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
 }

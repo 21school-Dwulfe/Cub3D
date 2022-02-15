@@ -52,7 +52,7 @@ static char	*get_str_texs(char *str, int *i)
 	return (str);
 }
 
-void	get_texts(int *i, char *line, t_data *data, char *flag)
+void	get_texts(int *i, char *line, t_parser *data, char *flag)
 {
 	int		j;
 
@@ -65,14 +65,14 @@ void	get_texts(int *i, char *line, t_data *data, char *flag)
 			(*i)++;
 		else if (line[*i] == '.' && line[(*i) + 1] == '/')
 		{
-			if (!ft_strncmp(flag, "NO", 3) && !data->txs->no)
-				data->txs->no = get_str_texs(line, i);
-			else if (!ft_strncmp(flag, "SO", 3) && !data->txs->so)
-				data->txs->so = get_str_texs(line, i);
-			else if (!ft_strncmp(flag, "WE", 3) && !data->txs->we)
-				data->txs->we = get_str_texs(line, i);
-			else if (!ft_strncmp(flag, "EA", 3) && !data->txs->ea)
-				data->txs->ea = get_str_texs(line, i);
+			if (!ft_strncmp(flag, "NO", 3) && !data->paths->no)
+				data->paths->no = get_str_texs(line, i);
+			else if (!ft_strncmp(flag, "SO", 3) && !data->paths->so)
+				data->paths->so = get_str_texs(line, i);
+			else if (!ft_strncmp(flag, "WE", 3) && !data->paths->we)
+				data->paths->we = get_str_texs(line, i);
+			else if (!ft_strncmp(flag, "EA", 3) && !data->paths->ea)
+				data->paths->ea = get_str_texs(line, i);
 			break ;
 		}
 		else

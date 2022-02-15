@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-void	get_map(int i, int j, char **file, t_data *data)
+void	get_map(int i, int j, char **file, t_parser *data)
 {
 	char	**map;
 	int		size;
@@ -37,14 +37,14 @@ void	get_map(int i, int j, char **file, t_data *data)
 	data->map = map;
 }
 
-int	find_map(int *i, char **file, t_data *data)
+int	find_map(int *i, char **file, t_parser *data)
 {
-	t_params	*params;
+	//t_params	*params;
 	int			j;
 
-	params = malloc(sizeof(t_params));
-	init_params(&params);
-	data->params = params;
+	// params = malloc(sizeof(t_params));
+	// init_params(&params);
+	// data->params = params;
 	while (file[*i])
 	{
 		j = 0;
@@ -65,7 +65,7 @@ int	find_map(int *i, char **file, t_data *data)
 	return (0);
 }
 
-void	parse_file(t_data *data, char **f, int *i, int *j)
+void	parse_file(t_parser *data, char **f, int *i, int *j)
 {
 	while (f[++(*i)])
 	{
@@ -73,13 +73,13 @@ void	parse_file(t_data *data, char **f, int *i, int *j)
 		while (f[*i][*j] && collect_all(data))
 		{
 			if_space(f[*i], j);
-			if (f[*i][*j] == 'N' && f[*i][(*j) + 1] == 'O' && !data->txs->no)
+			if (f[*i][*j] == 'N' && f[*i][(*j) + 1] == 'O' && !data->paths->no)
 				get_texts(j, f[*i], data, "NO");
-			else if (f[*i][*j] == 'S' && f[*i][*j + 1] == 'O' && !data->txs->so)
+			else if (f[*i][*j] == 'S' && f[*i][*j + 1] == 'O' && !data->paths->so)
 				get_texts(j, f[*i], data, "SO");
-			else if (f[*i][*j] == 'E' && f[*i][*j + 1] == 'A' && !data->txs->ea)
+			else if (f[*i][*j] == 'E' && f[*i][*j + 1] == 'A' && !data->paths->ea)
 				get_texts(j, f[*i], data, "EA");
-			else if (f[*i][*j] == 'W' && f[*i][*j + 1] == 'E' && !data->txs->we)
+			else if (f[*i][*j] == 'W' && f[*i][*j + 1] == 'E' && !data->paths->we)
 				get_texts(j, f[*i], data, "WE");
 			else if (f[*i][*j] == 'F' && !data->colors->floor)
 				get_colors(j, f[*i], data, 'F');

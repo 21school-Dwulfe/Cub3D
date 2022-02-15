@@ -6,31 +6,31 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 20:52:05 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/05 18:00:03 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	get_char(char c, t_data *data, int i, int j)
+void	get_char(char c, t_parser *parser, int x, int y)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' )
-		data->params->pos += c;
+		parser->pos += c;
 	else if (c == 'C')
-		data->params->coin++;
+		parser->coin++;
 	else if (c == 'X')
-		data->params->enemy++;
+		parser->enemy++;
 	else if (c == '1' || c == '0')
 		return ;
-	if (data->params->pos)
+	if (parser->pos)
 	{
-		data->params->x = i;
-		data->params->y = j;
+		parser->pos_x = x;
+		parser->pos_y = y;
 	}
-	else if (data->params->coin)
+	else if (parser->coin)
 	{
-		data->params->coin_pos_x = i;
-		data->params->coin_pos_y = j;
+		parser->coin_pos_x = x;
+		parser->coin_pos_y = y;
 	}
 }
 
@@ -109,7 +109,7 @@ void	check_corners(char **map)
 	}
 }
 
-char	**check_map(char **map, t_data *data, int size, int len)
+char	**check_map(char **map, t_parser *data, int size, int len)
 {
 	int		i;
 

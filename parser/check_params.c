@@ -23,26 +23,28 @@ int	check(char *filename)
 	return (0);
 }
 
-int	check_params(t_data *data, char **file)
+int	check_params(t_parser *parser, char **file)
 {
 	int		i;
 	int		j;
 
 	j = 0;
 	i = -1;
-	parse_file(data, file, &i, &j);
-	if (data->params->pos != 'N' && data->params->pos != 'S'
-		&& data->params->pos != 'W' && data->params->pos != 'E')
+	parse_file(parser, file, &i, &j);
+	if (parser->pos != 'N' && parser->pos != 'S'
+		&& parser->pos != 'W' && parser->pos != 'E')
 		ft_error(DATA_ERROR);
 	return (0);
 }
 
-int	collect_all(t_data *data)
+int	collect_all(t_parser *parser)
 {
-	if (data->colors->floor && data->colors->cell && data->txs->no
-		&& data->txs->ea && data->txs->so && data->txs->we && data->map)
+	if (parser->colors->floor && parser->colors->cell
+		&& parser->paths->no
+		&& parser->paths->ea && parser->paths->so
+		&& parser->paths->we && parser->map)
 		return (0);
-	else if (data->map)
+	else if (parser->map)
 		ft_error(FILE_ERROR);
 	return (1);
 }

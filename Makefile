@@ -16,36 +16,42 @@ DEBUG			= -g -fsanitize=address
 OPTIM			= -O2
 INCLUDES		= -I./includes
 CC				= gcc
-MLXLIB			= -lmlx -framework OpenGL -framework AppKit
-LIB				= -L./libs/Libft -lft
-PARSERLIB		= -L./parser/ -lparser
+ifeq ($(SYSTEM), Linux)
+MLXLIB			= -L./libs/minilibx_linux -lmlx_Linux -lXext -lX11 -lm -lz
+MLXDIR			= ./libs/minilibx_linux/
+else ifeq ($(SYSTEM), Darwin)
+MLXLIB			= -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit
+MLXDIR			= ./libs/minilibx_opengl/
+endif
+LIB				= -L./libs/libft -lft
+PARSERLIB		= -L./parser/ -lparser -I./parser
 MAIN			= ./objs/main.o
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
-		$(CC) $(CFLAGS) -g -DPWD="\"$(shell pwd)\"" -c $< -o $@
+		$(CC) $(CFLAGS)  -g -DPWD="\"$(shell pwd)\"" -DBONUS=0 -c $< -o $@
 
-${APP} 	: Makefile buildrepo $(LIB) $(MLX) $(PARSERLIB) $(MAIN) $(OBJS)
-		$(CC) $(CFLAGS) $(DEBUG) $(PARSERLIB) $(MLXLIB) $(LIB) $(MAIN) $(OBJS) -o $(APP)
-
+${APP} 	: Makefile buildrepo $(LIB)  $(MLXLIB) $(PARSERLIB) $(MAIN) $(OBJS)
+		$(CC) $(CFLAGS) $(DEBUG)  $(MAIN) $(OBJS) -o $(APP) $(PARSERLIB) $(MLXLIB) $(LIB)
+# gcc main.c render/srcs/*.c -DBONUS=0 -DPWD="\"$(pwd)\"" -L./parser -lparser -L./libs/minilibx_linux -lmlx_Linux -lXext -lX11 -lm -lz -L./libs/libft -lft
 all : $(APP)
 
 print : 
-	echo $(OBJS)
+	echo $(MLXLIB)
 
 buildrepo :
 		mkdir -p  $(OBJDIR)
 
-$(MLX) :
+$(MLXLIB) :
 	cd $(MLXDIR) && $(MAKE)
 
 $(PARSERLIB):
 	$(MAKE) lib -C ./parser
 
 $(LIB) :
-	$(MAKE) -C ./libs/Libft
+	$(MAKE) -C ./libs/libft
 
 $(MAIN) :
-	$(CC) $(CFLAGS) -c main.c -o $(MAIN)
+	$(CC) $(CFLAGS) -g -c main.c -o $(MAIN)
 	
 # clean:
 # 			$(MAKE) clean -C $(LIBDIR) $(MLXDIR)
@@ -63,14 +69,15 @@ re:			fclean all
 # $(MAKE) -C  ./libs/libft
 clean	:
 	$(MAKE) clean -C  ./parser
-	$(MAKE) clean -C  ./libs/Libft
-	$(MAKE) clean -C  ./libs/minilibx_mms
+	$(MAKE) clean -C  ./libs/libft
+	$(MAKE) clean -C  $(MLXDIR)
 
 fclean	:
 		rm -rf $(APP)
 		rm -rf $(OBJDIR)
 		$(MAKE) fclean -C  ./parser
-		$(MAKE) fclean -C  ./libs/Libft
+		$(MAKE) fclean -C  ./libs/libft
+		$(MAKE) clean -C  $(MLXDIR)
 
 .PHONY	: all clean fclean re bonus buildrepo print create
 	

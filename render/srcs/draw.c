@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 14:50:48 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/03 17:05:02 by dwulfe           ###   ########.fr       */
+/*   Created: 2022/02/04 19:06:58 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/06 20:19:00 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "../render.h"
 
-# include "./parser/cub3D.h"
-# include "./render/render.h"
+void	draw(t_data *data)
+{
+	(void)data;
+	int y;
+	int x;
+	
+	x = 0;
+	y = 0;
+	while (y < WIN_Y)
+	{
+		x = 0;
+		while (x < WIN_X)
+		{
+			data->mlx_image->addr[y * WIN_X + x] = data->buff[y][x]; 
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_image->img, 0, 0);
+}
 
-#endif

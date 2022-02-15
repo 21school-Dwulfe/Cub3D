@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 22:45:08 by dwulfe           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "cub3D.h"
 
@@ -20,6 +9,8 @@ int	file_size(int out, char *argv)
 
 	i = 0;
 	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		ft_error(READ_ERROR);
 	while (out)
 	{
 		out = get_next_line(fd, &line, 0);
@@ -33,7 +24,7 @@ int	file_size(int out, char *argv)
 	return (i);
 }
 
-void	parse(t_data *data, char *argv)
+void	parse(t_parser *data, char *argv)
 {
 	int		i;
 	int		fd;
