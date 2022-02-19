@@ -1,7 +1,7 @@
-NO ./textures/redbrick.xpm
-SO ./textures/wood.xpm
-WE ./textures/greystone.xpm
-EA ./textures/bluestone.xpm
+NO ./textures/wolfenstein/redbrick.xpm
+SO ./textures/wolfenstein/wood.xpm
+WE ./textures/wolfenstein/greystone.xpm
+EA ./textures/wolfenstein/bluestone.xpm
 
 F 105,105,105
 C 0,255,255

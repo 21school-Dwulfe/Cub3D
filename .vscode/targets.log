@@ -1,0 +1,541 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+Makefile:44: target `-framework' given more than once in the same rule.
+ 
+
+# Make data base, printed on Sat Feb 19 18:15:52 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 17)
+INCLUDES = -I./includes
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+ 
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/dwulfe/my_cube
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 14)
+CFLAGS = -Wall -Wextra -Werror
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 9)
+SRCS := ./render/srcs//colors_chars.c ./render/srcs//colors_int.c ./render/srcs//doors.c ./render/srcs//draw.c ./render/srcs//error.c ./render/srcs//events.c ./render/srcs//floor_ceiling.c ./render/srcs//key_update.c ./render/srcs//minimap.c ./render/srcs//mouse.c ./render/srcs//prerender.c ./render/srcs//render.c ./render/srcs//sprites.c ./render/srcs//textures.c ./render/srcs//walls.c ./render/srcs//weapon.c
+# makefile (from `Makefile', line 15)
+DEBUG = -g -fsanitize=address
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from `Makefile', line 12)
+SYSTEM = $(shell uname)
+# makefile (from `Makefile', line 10)
+OBJS := ./objs/colors_chars.o ./objs/colors_int.o ./objs/doors.o ./objs/draw.o ./objs/error.o ./objs/events.o ./objs/floor_ceiling.o ./objs/key_update.o ./objs/minimap.o ./objs/mouse.o ./objs/prerender.o ./objs/render.o ./objs/sprites.o ./objs/textures.o ./objs/walls.o ./objs/weapon.o
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0001x4w000g97/T/vscode-ipc-5873ff1a-7109-4021-88ab-40281a1dbb26.sock
+# makefile (from `Makefile', line 1)
+APP = Cub3d
+# environment
+VSCODE_CWD = /
+# environment
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.xewLUj3Fl7/Render
+# environment
+PATH = /Users/dwulfe/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/opt/X11/bin
+# makefile (from `Makefile', line 27)
+PARSERLIB = -L./parser/ -lparser -I./parser
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 23)
+MLXLIB = -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.HSjCnYmXd9/Listeners
+# makefile (from `Makefile', line 4)
+SRCDIR := ./render/srcs/
+# automatic
+%F = $(notdir $%)
+# environment
+HOMEBREW_TEMP = /tmp/dwulfe/Homebrew/Temp
+# environment
+DISPLAY = /private/tmp/com.apple.launchd.PP6y14K7jA/org.xquartz:0
+# makefile (from `Makefile', line 16)
+OPTIM = -O2
+# environment
+VSCODE_PIPE_LOGGING = true
+# makefile (from `Makefile', line 7)
+PWD := /Users/dwulfe/my_cube
+# makefile (from `Makefile', line 6)
+HEADERDIR := includes
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/dwulfe
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/dwulfe/Library/Application Support/Code/CachedData/f80445acd5a3dadef24aa209168452a3d97cc326
+# environment
+LOGNAME = dwulfe
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from `Makefile', line 11)
+HEADERS := ./libs/include.h ./libs/libft/libft.h ./libs/minilibx_linux/mlx.h ./libs/minilibx_linux/mlx_int.h ./libs/minilibx_mms/mlx.h ./libs/minilibx_opengl/mlx.h ./libs/minilibx_opengl/mlx_int.h ./libs/minilibx_opengl/mlx_new_window.h ./libs/minilibx_opengl/mlx_opengl.h ./libs/minilibx_opengl/mlx_png.h
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+ 
+MAKECMDGOALS := all
+# environment
+HOMEBREW_CACHE = /tmp/dwulfe/Homebrew/Caches
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 18)
+CC = gcc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = dwulfe
+# makefile
+.DEFAULT_GOAL := Cub3d
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n0001x4w000g97/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/dwulfe/Library/Application Support/Code/1.64.2-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from `Makefile', line 28)
+MAIN = ./objs/main.o
+# environment
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from `Makefile', line 24)
+MLXDIR = ./libs/minilibx_opengl/
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x3D27:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# makefile (from `Makefile', line 5)
+OBJDIR := ./objs/
+# makefile (from `Makefile', line 26)
+LIB = -L./libs/libft -lft
+# environment
+LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a8
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 2591
+# variable set hash-table stats:
+# Load=84/1024=8%, Rehash=0, Collisions=8/137=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777227, inode 831430): 19 files, no impossibilities.
+# ./render/srcs (device 16777227, inode 831691): No files, no impossibilities so far.
+
+# 19 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+objs/%.o: ./render/srcs/%.c
+#  commands to execute (from `Makefile', line 31):
+	$(CC) $(CFLAGS)  -g -DPWD="\"$(shell pwd)\"" -DBONUS=1 -c $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+-framework:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	cd $(MLXDIR) && $(MAKE)
+	
+
+# Not a target:
+objs/colors_chars.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+-L./libs/minilibx_opengl:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	cd $(MLXDIR) && $(MAKE)
+	
+
+objs/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 54):
+	$(CC) $(CFLAGS) -g -c main.c -o $(MAIN)
+	
+
+all: Cub3d
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+
+# Not a target:
+objs/error.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+-lmlx:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	cd $(MLXDIR) && $(MAKE)
+	
+
+.PHONY: all clean fclean re bonus buildrepo print create
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 83):
+	
+
+-I./parser:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 48):
+	$(MAKE) lib -C ./parser
+	
+
+# Not a target:
+objs/minimap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+Cub3d: Makefile buildrepo -L./libs/libft -lft -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit -L./parser -lparser -I./parser objs/main.o objs/colors_chars.o objs/colors_int.o objs/doors.o objs/draw.o objs/error.o objs/events.o objs/floor_ceiling.o objs/key_update.o objs/minimap.o objs/mouse.o objs/prerender.o objs/render.o objs/sprites.o objs/textures.o objs/walls.o objs/weapon.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-02-19 17:14:11
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  commands to execute (from `Makefile', line 34):
+	$(CC) $(CFLAGS) $(DEBUG)  $(MAIN) $(OBJS) -o $(APP) $(PARSERLIB) $(MLXLIB) $(LIB)
+	
+
+# Not a target:
+objs/weapon.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+print:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 39):
+	echo $(MLXLIB)
+	
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-15 15:18:27
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+objs/textures.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/walls.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/sprites.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/mouse.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/render.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/key_update.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+create:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+OpenGL:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	cd $(MLXDIR) && $(MAKE)
+	
+
+buildrepo:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := buildrepo
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  commands to execute (from `Makefile', line 42):
+	mkdir -p  $(OBJDIR)
+	
+
+-L./libs/libft:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	$(MAKE) -C ./libs/libft
+	
+
+AppKit:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 45):
+	cd $(MLXDIR) && $(MAKE)
+	
+
+# Not a target:
+objs/doors.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+-lft:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 51):
+	$(MAKE) -C ./libs/libft
+	
+
+bonus:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+fclean:
+ 
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 76):
+	rm -rf $(APP)
+	rm -rf $(OBJDIR)
+	$(MAKE) fclean -C  ./parser
+	$(MAKE) fclean -C  ./libs/libft
+	$(MAKE) clean -C  $(MLXDIR)
+	
+
+# Not a target:
+objs/colors_int.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/prerender.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+-L./parser:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 48):
+	$(MAKE) lib -C ./parser
+	
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 71):
+	$(MAKE) clean -C  ./parser
+	$(MAKE) clean -C  ./libs/libft
+	$(MAKE) clean -C  $(MLXDIR)
+	
+
+-lparser:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 48):
+	$(MAKE) lib -C ./parser
+	
+
+# Not a target:
+objs/floor_ceiling.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/draw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/events.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=40/1024=4%, Rehash=0, Collisions=4/96=4%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Sat Feb 19 18:15:52 2022
+
+ 

@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/05 18:00:03 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/16 17:49:16 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 void	get_char(char c, t_parser *parser, int x, int y)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' )
+	{
 		parser->pos += c;
+		parser->pos_x = x;
+		parser->pos_y = y;
+	}
 	else if (c == 'C')
 		parser->coin++;
 	else if (c == 'X')
 		parser->enemy++;
 	else if (c == '1' || c == '0')
 		return ;
-	if (parser->pos)
-	{
-		parser->pos_x = x;
-		parser->pos_y = y;
-	}
-	else if (parser->coin)
+	if (parser->coin)
 	{
 		parser->coin_pos_x = x;
 		parser->coin_pos_y = y;

@@ -6,7 +6,7 @@
 // /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 // /*                                                +#+#+#+#+#+   +#+           */
 // /*   Created: 2022/02/06 15:56:46 by dwulfe            #+#    #+#             */
-// /*   Updated: 2022/02/06 19:11:14 by dwulfe           ###   ########.fr       */
+// /*   Updated: 2022/02/18 13:22:28 by dwulfe           ###   ########.fr       */
 // /*                                                                            */
 // /* ************************************************************************** */
 
@@ -54,11 +54,11 @@
 // 	free(sprites);
 // }
 
-// void	textures(t_data *data)
+// void	textures(t_data *d)
 // {
 // 	//SPRITE CASTING
 // 	//sort sprites from far to close
-// 	for(int i = 0; i < numSprites; i++)
+// 	for(int i = 0; i < d->numSprites; i++)
 // 	{
 // 		spriteOrder[i] = i;
 // 		spriteDistance[i] = ((info->posX - sprite[i].x) * (info->posX - sprite[i].x) + (info->posY - sprite[i].y) * (info->posY - sprite[i].y)); //sqrt not taken, unneeded

@@ -28,7 +28,7 @@ PARSERLIB		= -L./parser/ -lparser -I./parser
 MAIN			= ./objs/main.o
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
-		$(CC) $(CFLAGS)  -g -DPWD="\"$(shell pwd)\"" -DBONUS=0 -c $< -o $@
+		$(CC) $(CFLAGS)  -g -DPWD="\"$(shell pwd)\"" -DBONUS=1 -c $< -o $@
 
 ${APP} 	: Makefile buildrepo $(LIB)  $(MLXLIB) $(PARSERLIB) $(MAIN) $(OBJS)
 		$(CC) $(CFLAGS) $(DEBUG)  $(MAIN) $(OBJS) -o $(APP) $(PARSERLIB) $(MLXLIB) $(LIB)

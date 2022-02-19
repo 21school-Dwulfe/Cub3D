@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 21:43:52 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/07 21:49:18 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/16 22:30:01 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	digital_differential_analyzer(t_data *d)
 			d->rc->map_y += d->rc->step_y;
 			d->rc->side = 1;
 		}
-		if (d->rc->map[d->rc->map_x][d->rc->map_y] > 0)
+		if (d->rc->map[d->rc->map_y][d->rc->map_x] > 0)
 			d->rc->hit = 1;
 	}
 	if (d->rc->side == 0)
@@ -175,17 +175,10 @@ void	walls(t_data *d)
 	x = 0;
 	while (x < WIN_X)
 	{
-		 calc_ray_position_direction(d, x);
-		// calc_step_and_dist(d);
-		// digital_differential_analyzer(d);
-		// calc_height_and_dist_of(&d->rc->line_height, &d->rc->draw_start, &d->rc->draw_end, d->rc->perp_wall_dist);
-		// choose_pixel_of_wall(d);
-		// untextured_draw_line(d, x);
-		//textures_coordinate(d, x);
-		//
+		calc_ray_position_direction(d, x);
 		// d->rc->camera_x = 2 * x / (double)WIN_X - 1;
-		// d->rc->ray_dir_x = d->rc->dir_x + d->rc->plane_x * d->rc->camera_x;
-		// d->rc->ray_dir_y = d->rc->dir_y + d->rc->plane_y * d->rc->camera_x;
+		// d->rc->ray_dir_x = d->rc->dir_y + d->rc->plane_y * d->rc->camera_x;
+		// d->rc->ray_dir_y = d->rc->dir_x + d->rc->plane_x * d->rc->camera_x;
 		// d->rc->map_x = (int)d->rc->pos_x;
 		// d->rc->map_y = (int)d->rc->pos_y;
 		// d->rc->delta_dist_x = fabs(1 / d->rc->ray_dir_x);
@@ -205,65 +198,77 @@ void	walls(t_data *d)
 		
 		 //was there a wall hit?
 		//int side; //was a NS or a EW wall hit?
-		calc_step_and_dist(d);
-		// if (d->rc->ray_dir_x < 0)
-		// {
-		// 	d->rc->step_x = -1;
-		// 	d->rc->side_dist_x = (d->rc->pos_x - d->rc->map_x) * d->rc->delta_dist_x;
-		// }
-		// else
-		// {
-		// 	d->rc->step_x = 1;
-		// 	d->rc->side_dist_x = (d->rc->map_x + 1.0 - d->rc->pos_x) * d->rc->delta_dist_x;
-		// }
-		// if (d->rc->ray_dir_y < 0)
-		// {
-		// 	d->rc->step_y = -1;
-		// 	d->rc->side_dist_y = (d->rc->pos_y - d->rc->map_y) * d->rc->delta_dist_y;
-		// }
-		// else
-		// {
-		// 	d->rc->step_y = 1;
-		// 	d->rc->side_dist_y = (d->rc->map_y + 1.0 - d->rc->pos_y) * d->rc->delta_dist_y;
-		// }
-		digital_differential_analyzer(d);
-		// while (d->rc->hit == 0)
-		// {
-		// 	//jump to next map square, OR in x-direction, OR in y-direction
-		// 	if (d->rc->side_dist_x < d->rc->side_dist_y)
-		// 	{
-		// 		d->rc->side_dist_x += d->rc->delta_dist_x;
-		// 		d->rc->map_x += d->rc->step_x;
-		// 		d->rc->side = 0;
-		// 	}
-		// 	else
-		// 	{
-		// 		d->rc->side_dist_y += d->rc->delta_dist_y;
-		// 		d->rc->map_y += d->rc->step_y;
-		// 		d->rc->side = 1;
-		// 	}
-		// 	if (d->rc->map[d->rc->map_x][d->rc->map_y] > 0)
-		// 		d->rc->hit = 1;
-		// }
-		// if (d->rc->side == 0)
-		// 	d->rc->perp_wall_dist = (d->rc->map_x - d->rc->pos_x + (1 - d->rc->step_x) / 2) / d->rc->ray_dir_x;
-		// else
-		// 	d->rc->perp_wall_dist = (d->rc->map_y - d->rc->pos_y + (1 - d->rc->step_y) / 2) / d->rc->ray_dir_y;
-		calc_height_and_dist_of(d);
-		// //Calculate height of line to draw on screen
-		// d->rc->line_height = (int)(WIN_Y / d->rc->perp_wall_dist);
+	//	calc_step_and_dist(d);
+		if (d->rc->ray_dir_x < 0)
+		{
+			d->rc->step_x = -1;
+			d->rc->side_dist_x = (d->rc->pos_x - d->rc->map_x) * d->rc->delta_dist_x;
+		}
+		else
+		{
+			d->rc->step_x = 1;
+			d->rc->side_dist_x = (d->rc->map_x + 1.0 - d->rc->pos_x) * d->rc->delta_dist_x;
+		}
+		if (d->rc->ray_dir_y < 0)
+		{
+			d->rc->step_y = -1;
+			d->rc->side_dist_y = (d->rc->pos_y - d->rc->map_y) * d->rc->delta_dist_y;
+		}
+		else
+		{
+			d->rc->step_y = 1;
+			d->rc->side_dist_y = (d->rc->map_y + 1.0 - d->rc->pos_y) * d->rc->delta_dist_y;
+		}
+		//digital_differential_analyzer(d);
+		while (d->rc->hit == 0)
+		{
+			//jump to next map square, OR in x-direction, OR in y-direction
+			if (d->rc->side_dist_x < d->rc->side_dist_y)
+			{
+				d->rc->side_dist_x += d->rc->delta_dist_x;
+				d->rc->map_x += d->rc->step_x;
+				d->rc->side = 0;
+			}
+			else
+			{
+				d->rc->side_dist_y += d->rc->delta_dist_y;
+				d->rc->map_y += d->rc->step_y;
+				d->rc->side = 1;
+			}
+			if (d->rc->map[d->rc->map_x][d->rc->map_y] > 0)
+				d->rc->hit = 1;
+		}
+		if (d->rc->side == 0)
+			d->rc->perp_wall_dist = (d->rc->map_x - d->rc->pos_x + (1 - d->rc->step_x) / 2) / d->rc->ray_dir_x;
+		else
+			d->rc->perp_wall_dist = (d->rc->map_y - d->rc->pos_y + (1 - d->rc->step_y) / 2) / d->rc->ray_dir_y;
+	//	calc_height_and_dist_of(d);
+		//Calculate height of line to draw on screen
+		d->rc->line_height = (int)(WIN_Y / d->rc->perp_wall_dist);
 
-		// //calculate lowest and highest pixel to fill in current stripe
-		// d->rc->draw_start = -d->rc->line_height / 2 + WIN_Y / 2;
-		// if (d->rc->draw_start < 0)
-		// 	d->rc->draw_start = 0;
-		// d->rc->draw_end = d->rc->line_height / 2 + WIN_Y / 2;
-		// if (d->rc->draw_end >= WIN_Y)
-		// 	d->rc->draw_end = WIN_Y - 1;
+		//calculate lowest and highest pixel to fill in current stripe
+		d->rc->draw_start = -d->rc->line_height / 2 + WIN_Y / 2;
+		if (d->rc->draw_start < 0)
+			d->rc->draw_start = 0;
+		d->rc->draw_end = d->rc->line_height / 2 + WIN_Y / 2;
+		if (d->rc->draw_end >= WIN_Y)
+			d->rc->draw_end = WIN_Y - 1;
 		//untextured_draw_line(d, x);
 
 		// texturing calculations
-		d->rc->txtr_num = d->rc->map[d->rc->map_y][d->rc->map_x];
+		// side = 0 ray_dir_x < 0  position = start_position N
+		// side = 1 ray_dir_y < 0 position E or left from start
+		// side = 0 ray_dir_x >0  position S
+		// side = 1 ray_dir_y > 0 position W
+		if (d->rc->side == 1 && d->rc->ray_dir_y < 0)
+			d->rc->txtr_num = 3;
+		else if (d->rc->side == 1 && d->rc->ray_dir_y >= 0)
+			d->rc->txtr_num = 2;
+		else if (d->rc->side == 0 && d->rc->ray_dir_x <= 0)
+			d->rc->txtr_num = 0;
+		else if (d->rc->side == 0 && d->rc->ray_dir_x > 0)
+			d->rc->txtr_num = 1;
+		//d->rc->txtr_num = d->rc->map[d->rc->map_y][d->rc->map_x];
 
 		// calculate value of wallX
 		if (d->rc->side == 0)
@@ -289,7 +294,7 @@ void	walls(t_data *d)
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			d->rc->txtr_y = (int)d->rc->txtr_pos & (TXTR_H - 1);
 			d->rc->txtr_pos += d->rc->step;
-			d->rc->color = d->textures[4][TXTR_H * d->rc->txtr_y + d->rc->txtr_x];
+			d->rc->color = d->textures[d->rc->txtr_num][TXTR_H * d->rc->txtr_y + d->rc->txtr_x];
 			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 			if (d->rc->side == 1)
 				d->rc->color = (d->rc->color >> 1) & 8355711;

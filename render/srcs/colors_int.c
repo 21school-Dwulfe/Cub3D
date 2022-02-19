@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 19:34:02 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/04 19:41:05 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/17 23:49:25 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	get_b(int trgb)
 //t << 24 |
 int	create_trgb(int r, int g, int b)
 {
+	
 	return (r << 16 | g << 8 | b);
 }

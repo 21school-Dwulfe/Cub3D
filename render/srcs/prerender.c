@@ -1,41 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prerender.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/18 15:19:33 by dwulfe            #+#    #+#             */
+/*   Updated: 2022/02/19 17:04:49 by dwulfe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "../render.h"
 
-void	define_player_position(t_data *d)
+void	load_image(t_img *img, void *mlx_ptr, char *path)
 {
-	d->rc->pos_x = (double)d->parser->pos_x + 0.5;
-	d->rc->pos_y = (double)d->parser->pos_y + 0.5;
-	if (d->parser->pos == 'N')
+	img->img = mlx_xpm_file_to_image(mlx_ptr, path, &img->img_width, &img->img_height);
+	if (!img->img)
 	{
-		d->rc->plane_x = 0.0;
-		d->rc->plane_y = 0.66;
-		d->rc->dir_x = -1.0;
-		d->rc->dir_y = 0.0;
+		error_message("Error : ");
+		error_message(path);
+		error_message(" : No such image\n");
+		exit(EXIT_FAILURE);
 	}
-	if (d->parser->pos == 'S')
-	{
-		d->rc->plane_x = 0;
-		d->rc->plane_y = -0.66;
-		d->rc->dir_x = 1;
-		d->rc->dir_y = 0;
-		
-	}
-	if (d->parser->pos == 'W')
-	{
-		d->rc->plane_x = -0.66;
-		d->rc->plane_y = 0;
-		d->rc->dir_x = 0;
-		d->rc->dir_y = -1;
-	}
-	if (d->parser->pos == 'E')
-	{
-		d->rc->plane_x = 0.66;
-		d->rc->plane_y = 0;
-		d->rc->dir_x = 0;
-		d->rc->dir_y = 1;
-	}
+	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->size_l, &img->endian);
 }
 
-void	load_image(t_data *data,int **text, char *path, t_img *img)
+void	save_image(t_data *data,int **text, char *path, t_img *img)
 {
 	int		x;
 	int		y;
@@ -43,8 +33,7 @@ void	load_image(t_data *data,int **text, char *path, t_img *img)
 
 	y = 0;
 	x = 0;
-	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->img_width, &img->img_height);
-	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->size_l, &img->endian);
+	load_image(img, data->mlx_win, path);
 	*text = malloc(sizeof(int) * TXTR_H * TXTR_W);
 	while (y < img->img_height)
 	{
@@ -59,31 +48,46 @@ void	load_image(t_data *data,int **text, char *path, t_img *img)
 	mlx_destroy_image(data->mlx, img->img);
 }
 
-void	load_textures(t_data *data)
+void	load_array_images(t_weapon *weapon, void *mlx_ptr, char **path, int i)
+{
+	int	l;
+
+	l = 0;
+	weapon->img = malloc(sizeof(t_img) * (i + 1));
+	weapon->num_img = 0;
+	while (weapon->num_img < i)
+	{
+		load_image(&weapon->img[weapon->num_img], mlx_ptr, path[l]);
+		l++;
+		weapon->num_img++;
+	}
+}
+
+void	load_weapons(t_data *d)
+{
+	char *array[8];
+	
+	array[0] = "textures/weapon/pistol_1.xpm";
+	array[1] = "textures/weapon/pistol_2.xpm";
+	array[2] = "textures/weapon/pistol_3.xpm";
+	array[3] = "textures/weapon/leg_1.xpm";
+	array[4] = "textures/weapon/leg_2.xpm";
+	array[5] = "textures/weapon/give_money.xpm";
+	array[6] = "textures/weapon/give_money_2.xpm";
+	load_array_images(&d->weapon[0], d->mlx_win, array, 3);
+	load_array_images(&d->weapon[1], d->mlx_win, array + 3, 2);
+	load_array_images(&d->weapon[2], d->mlx_win, array + 5, 2);
+	d->act_weapon = &d->weapon[0];
+}
+
+void	load_textures(t_data *d)
 {
 	t_img	img;
 
-	// data->textures = malloc(sizeof(t_img) * 5);
-	load_image(data, &data->textures[0], data->parser->paths->no, &img);
-	load_image(data, &data->textures[1], data->parser->paths->so, &img);
-	load_image(data, &data->textures[2], data->parser->paths->ea, &img);
-	load_image(data, &data->textures[3], data->parser->paths->we, &img);
-	load_image(data, &data->textures[4], "textures/door0.xpm", &img);
+	save_image(d, &d->textures[0], d->parser->paths->no, &img);
+	save_image(d, &d->textures[1], d->parser->paths->so, &img);
+	save_image(d, &d->textures[2], d->parser->paths->ea, &img);
+	save_image(d, &d->textures[3], d->parser->paths->we, &img);
+	save_image(d, &d->textures[4], "textures/wolfenstein/door0.xpm", &img);
+	load_weapons(d);
 }
-
-// void	load_textures_default(t_data *data)
-// {
-// 	//t_img	img;
-
-// 	// data->textures[0].addr = load_image(data, "textures/eagle.xpm", &img);
-// 	// data->textures[1].addr = load_image(data, "textures/redbrick.xpm", &img);
-// 	// data->textures[2].addr = load_image(data, "textures/purplestone.xpm", &img);
-// 	// data->textures[3].addr = load_image(data, "textures/greystone.xpm", &img);
-// 	// data->textures[4].addr = load_image(data, "textures/bluestone.xpm", &img);
-// 	// data->textures[5].addr = load_image(data, "textures/mossy.xpm", &img);
-// 	// data->textures[6].addr = load_image(data, "textures/wood.xpm", &img);
-// 	// data->textures[7].addr = load_image(data, "textures/colorstone.xpm", &img);
-// 	// data->textures[8].addr = load_image(data, "textures/barrel.xpm", &img);
-// 	// data->textures[9].addr = load_image(data, "textures/pillar.xpm", &img);
-// 	// data->textures[10].addr = load_image(data, "textures/greenlight.xpm", &img);
-// }

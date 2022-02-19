@@ -6,27 +6,32 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 15:49:12 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/06 18:18:08 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/19 15:30:28 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../render.h"
 
 //(*f)(int button, int x, int y, void *param);
-int mouse_action(int key, int x,int y, void *p)
+int mouse_action(int x, int y, void *d)
 {
 	t_data	*data;
 
-	data = (t_data *)p;
-	(void)key;
-	(void)data;
+	data = (t_data *)d;
 	(void)y;
 	(void)x;
-	//if (x < WIN_X / 2)
+	(void)data;
+	// if (data && x < WIN_X / 2)
+	// {
+	// 	rotate_screen_to_left(data);
+	// }
+	// else if (data && x > WIN_X / 2)
+	// 	rotate_screen_to_right(data);	
+	printf("x=%d y=%d\n", x, y);
 	return (0);
 }
 
-int button_pressed(int key, void *d) // t_data *data)
+int button_pressed(int key, void *d)// t_data *data)
 {
 	t_data *data;
 	
@@ -46,6 +51,19 @@ int button_pressed(int key, void *d) // t_data *data)
 	return (key);
 }
 
+// void	weapon_change(t_data *d, int key)
+// {
+// 	t_weapon	tmp;
+
+// 	if (WEAPON_BEGINS >= key && key <= WEAPON_ENDS)
+// 	{
+// 		tmp.active = WEAPON_BEGINS - key;
+// 		tmp.first = WEAPON_BEGINS - key;
+// 		tmp.animation_end = 
+// 		choose_weapon(d, );
+// 	}
+// }
+
 int button_release(int key, void *d)
 {
 	t_data *data;
@@ -53,7 +71,8 @@ int button_release(int key, void *d)
 	data = (t_data *)d;
 	if (key == ESC)
 		exit(0);
-	if (key == W || key == S || key == A || key == D || key == LEFT || key == RIGHT)
+	if (key == W || key == S || key == A
+		|| key == D || key == LEFT || key == RIGHT)
 	{
 		if (key == LEFT)
 			data->key_l = 0;
@@ -62,6 +81,8 @@ int button_release(int key, void *d)
 		else
 			data->key[key] = 0;
 	}
+	if (key > WEAPON_BEGINS && key < WEAPON_ENDS)
+		;//weapon_change(d, key);
 	printf("release =%d\n", key);
 	return (key);
 }
