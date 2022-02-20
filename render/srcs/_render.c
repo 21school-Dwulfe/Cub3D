@@ -56,12 +56,14 @@ int	action(t_data *data)
 	floor_ceiling(data);
 	walls(data);
 	if (BONUS)
+	{
 		doors(data);
+		draw_minicard_field(data);
+		draw_weapon_animation(data);
+		stop_mouse_rotation(data);
+	}
 	key_update(data);
-	draw_minicard_field(data);
-	draw_weapon_animation(data);
 	draw_buff(data);
-	stop_mouse_rotation(data);
 	return (0);
 }
 
@@ -175,18 +177,20 @@ int	render(t_data *data)
 	rc = (t_raycaster){};
 	raycasting_init(data, &rc);
 	define_player_position(data);
-	mlx_mouse_hide();
-	load_textures(data);
-	load_weapons(data);
+	mlx_mouse_hide(data->mlx, data->mlx_win);
+	load_textures_mandatory(data);
+	if (BONUS)
+	{	
+		load_weapons(data);
+		//load_textures_additional();
+		set_start_ammunition(data);
+		mlx_hook(data->mlx_win, 6, (1L<<6), mouse_rotation, data);
+		mlx_hook(data->mlx_win, 4, (1L<<2), mouse_buttons_down, data);
+		mlx_hook(data->mlx_win, 5, (1L<<2), mouse_buttons_up, data);
+	}
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, button_pressed, data);
 	mlx_key_hook(data->mlx_win, button_release, data);
 	mlx_hook(data->mlx_win, DestroyNotify, KeyPressMask, ft_close, data);
-	if (BONUS)
-	{
-		mlx_hook(data->mlx_win, 6, 0, mouse_rotation, data);
-		mlx_hook(data->mlx_win, 4, 0, mouse_buttons_down, data);
-		mlx_hook(data->mlx_win, 5, 0, mouse_buttons_up, data);
-	}
 	mlx_loop_hook(data->mlx, action, data);
 	mlx_loop(data->mlx);
 	exit(0);

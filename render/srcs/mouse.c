@@ -35,7 +35,7 @@ int	mouse_rotation(int x,int y, void *p)
 	}
 	if (x < WIN_X * 0.3 || x > WIN_X * 0.7 || y < WIN_Y * 0.3 || y > WIN_Y * 0.7)
 	{
-		mlx_mouse_move(d->mlx_win, WIN_X / 2, WIN_Y / 2);
+		mlx_mouse_move(d->mlx, d->mlx_win, WIN_X / 2, WIN_Y / 2);
 		d->rc->x = WIN_X / 2;
 	}
 	d->rc->x = x;

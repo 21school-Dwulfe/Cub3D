@@ -20,7 +20,7 @@
 
 void	render_init(t_data *data);
 int		render(t_data *data);
-void	load_textures(t_data *data);
+void	load_textures_mandatory(t_data *data);
 void	define_player_position(t_data *d);
 int		create_trgb(int r, int g, int b);
 int		create_trgb_uch(unsigned char t, unsigned char r,
@@ -48,10 +48,10 @@ void	draw_minicard_field(t_data *d);
 int		mouse_rotation(int x,int y, void *p);
 int		mouse_buttons_down(int	key, int x, int y, void *data);
 int		mouse_buttons_up(int key, int x, int y, void *data);
-void	draw_weapon(t_data *d, t_img *weapon);
+void	draw_weapon(t_data *d, t_img *weapon, int partial);
 void	error_message(char *message);
 void	draw_weapon_animation(t_data *d);
 void	load_weapons(t_data *d);
-
+void    set_start_ammunition(t_data *d);
 
 #endif

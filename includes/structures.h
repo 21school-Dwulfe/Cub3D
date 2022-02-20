@@ -25,8 +25,8 @@
 # define MALLOC_ERROR 103
 # define READ_ERROR 104
 # define COMMON_ERROR 105
-# define WEAPON_BEGINS 18
-# define WEAPON_ENDS 27
+# define WEAPON_COUNT 12
+
 
 # ifdef __APPLE__
 # define W 13
@@ -36,6 +36,8 @@
 # define LEFT 123
 # define RIGHT 124
 # define ESC 53
+# define WEAPON_BEGINS 18
+# define WEAPON_ENDS 27
 # elif __linux__
 # define W 119
 # define A 97
@@ -44,6 +46,8 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define ESC 65307
+# define WEAPON_BEGINS 49
+# define WEAPON_ENDS 57
 # endif
 
 # ifndef BUFFER_SIZE
@@ -151,12 +155,14 @@ typedef struct s_weapon
 	int			step;
 	int			one_side;
 	int			num_img;
+	int			realoding;
+	int			changing;
 	t_img		*img;
 }				t_weapon;
 
 typedef struct s_data
 {
-	int					key[512];				// keys
+	short				key[512];				// keys
 	short				key_l;
 	short				key_r;
 	short				mouse_left;
@@ -171,8 +177,9 @@ typedef struct s_data
 	long				last_mouse_rotation;
 	long				last_mouse_left;
 	long				last_mouse_right_button;
+	int					available_weapon[9];
 	t_weapon			*act_weapon;
-	t_weapon			weapon[12]; 
+	t_weapon			weapon[WEAPON_COUNT]; 
 	t_img				*txtr[20];
 	t_parser			*parser;
 	t_raycaster			*rc;

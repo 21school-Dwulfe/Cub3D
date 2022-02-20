@@ -12,7 +12,7 @@
 
 #include "../render.h"
 
-void	draw_weapon(t_data *d, t_img *weapon)
+void	draw_weapon(t_data *d, t_img *weapon, int partial)
 {
 	int	x;
 	int y;
@@ -24,8 +24,8 @@ void	draw_weapon(t_data *d, t_img *weapon)
 	ft_bzero(increase, sizeof(int) * 4);
 	increase[2] = 2;
 	x_offset = WIN_X / 2;
-	y_offset =  WIN_Y - 1 - weapon->img_height * increase[2];
-	while (y < weapon->img_height)
+	y_offset =  WIN_Y - 1 - ((weapon->img_height - partial) * increase[2]);
+	while (y < weapon->img_height - partial)
 	{	
 		x = 0;
 		while (x < weapon->img_width)
@@ -50,16 +50,37 @@ void	draw_weapon(t_data *d, t_img *weapon)
 	}
 }
 
-// void	choose_weapon(t_data *data, t_weapon *weapon)
-// {
-	
-// }
+int	calc_change_weapon(t_data *d)
+{
+	static int partial;
+	static int result;
+
+	if (d->act_weapon->changing)
+	{
+		if (d->curr_time - d->act_weapon->changing <= 1)
+		{
+			partial = d->act_weapon->img->img_height / 24;
+			result =  d->act_weapon->img->img_height - partial;
+		}
+		else if (d->curr_time - d->act_weapon->changing < 24)
+		{
+			result -= partial ;
+		}
+		if (d->curr_time - d->act_weapon->changing == 24)
+		{
+			partial = 0;
+			result = 0;
+			return (0);
+		}
+	}
+	return (result);
+}
 
 void	draw_weapon_animation(t_data *d)
 {
 	if (!d->mouse_left)
-		draw_weapon(d, d->act_weapon->img + d->act_weapon->active);
-	if (d->mouse_left)
+		draw_weapon(d, d->act_weapon->img + d->act_weapon->active, calc_change_weapon(d));
+	if (d->mouse_left && !d->act_weapon->changing && !d->act_weapon->realoding)
     {
 		if (d->act_weapon->active == 0)
 		{
@@ -79,6 +100,6 @@ void	draw_weapon_animation(t_data *d)
 			d->mouse_left = 0;
 			d->act_weapon->active = 0;
 		}
-		draw_weapon(d, &d->act_weapon->img[d->act_weapon->active]);
+		draw_weapon(d, &d->act_weapon->img[d->act_weapon->active], 0);
     }
 }

@@ -123,7 +123,6 @@ void	key_update(t_data *d)
 		rotate_screen_to_right(d);
 	if (d->key_l)
 		rotate_screen_to_left(d);
-
 	if (d->rc->dir_x != old_dir_x || d->rc->dir_y != old_dir_y || d->rc->plane_x != old_plane_x
 		|| d->rc->plane_y  != old_plane_y || old_pos_x != d->rc->pos_x || old_pos_y != d->rc->pos_y)
 	printf("plane_X = %g plane_Y = %g dir_x %g dir_y %g pos_x %g pos_y %g  side %d ray_dir_y %g ray_dir_x %g \n",

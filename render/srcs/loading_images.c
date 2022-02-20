@@ -33,7 +33,7 @@ void	save_image(t_data *data,int **text, char *path, t_img *img)
 
 	y = 0;
 	x = 0;
-	load_image(img, data->mlx_win, path);
+	load_image(img, data->mlx, path);
 	*text = malloc(sizeof(int) * TXTR_H * TXTR_W);
 	while (y < img->img_height)
 	{
@@ -74,13 +74,12 @@ void	load_weapons(t_data *d)
 	array[4] = "textures/weapon/leg_2.xpm";
 	array[5] = "textures/weapon/give_money.xpm";
 	array[6] = "textures/weapon/give_money_2.xpm";
-	load_array_images(&d->weapon[0], d->mlx_win, array, 3);
-	load_array_images(&d->weapon[1], d->mlx_win, array + 3, 2);
-	load_array_images(&d->weapon[2], d->mlx_win, array + 5, 2);
-	d->act_weapon = &d->weapon[0];
+	load_array_images(&d->weapon[0], d->mlx, array, 3);
+	load_array_images(&d->weapon[1], d->mlx, array + 3, 2);
+	load_array_images(&d->weapon[2], d->mlx, array + 5, 2);
 }
 
-void	load_textures(t_data *d)
+void	load_textures_mandatory(t_data *d)
 {
 	t_img	img;
 

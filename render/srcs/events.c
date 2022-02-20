@@ -51,18 +51,17 @@ int button_pressed(int key, void *d)// t_data *data)
 	return (key);
 }
 
-// void	weapon_change(t_data *d, int key)
-// {
-// 	t_weapon	tmp;
+void	weapon_change(t_data *d, int key)
+{
+	int num;
 
-// 	if (WEAPON_BEGINS >= key && key <= WEAPON_ENDS)
-// 	{
-// 		tmp.active = WEAPON_BEGINS - key;
-// 		tmp.first = WEAPON_BEGINS - key;
-// 		tmp.animation_end = 
-// 		choose_weapon(d, );
-// 	}
-// }
+	num = key - WEAPON_BEGINS;
+	if (key - WEAPON_BEGINS < WEAPON_COUNT && d->available_weapon[num] != 0)
+	{
+		d->act_weapon = &d->weapon[key - WEAPON_BEGINS];
+		d->act_weapon->changing = d->curr_time;
+	}
+}
 
 int button_release(int key, void *d)
 {
@@ -81,8 +80,8 @@ int button_release(int key, void *d)
 		else
 			data->key[key] = 0;
 	}
-	if (key > WEAPON_BEGINS && key < WEAPON_ENDS)
-		;//weapon_change(d, key);
+	if (key >= WEAPON_BEGINS && key <= WEAPON_ENDS)
+		weapon_change(data, key);
 	printf("release =%d\n", key);
 	return (key);
 }

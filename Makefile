@@ -16,13 +16,13 @@ DEBUG			= -g -fsanitize=address
 OPTIM			= -O2
 INCLUDES		= -I./includes
 CC				= gcc
-# ifeq ($(SYSTEM), Linux)
-# MLXLIB			= -L./libs/minilibx_linux -lmlx_Linux -lXext -lX11 -lm -lz
-# MLXDIR			= ./libs/minilibx_linux/
-# else ifeq ($(SYSTEM), Darwin)
+ifeq ($(SYSTEM), Linux)
+MLXLIB			= -L./libs/minilibx_linux -lmlx_Linux -lXext -lX11 -lm -lz
+MLXDIR			= ./libs/minilibx_linux/
+else ifeq ($(SYSTEM), Darwin)
 MLXLIB			= -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit
 MLXDIR			= ./libs/minilibx_opengl/
-#endif
+endif
 LIB				= -L./libs/libft -lft
 PARSERLIB		= -L./parser/ -lparser -I./parser
 MAIN			= ./objs/main.o
