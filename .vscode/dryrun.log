@@ -1,58 +1,56 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/dwulfe/my_cube'
- 
-Makefile:44: target `-framework' given more than once in the same rule.
- 
 mkdir -p  ./objs/
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libs/libft
  
+Makefile:44: target `-framework' given more than once in the same rule.
+ 
 make[1]: Entering directory `/Users/dwulfe/my_cube/libs/libft'
 gcc -Wall -Wextra -Werror  -c ft_memset.c -o ft_memset.o -MD
  
 gcc -Wall -Wextra -Werror  -c ft_bzero.c -o ft_bzero.o -MD
 gcc -Wall -Wextra -Werror  -c ft_memcpy.c -o ft_memcpy.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_memccpy.c -o ft_memccpy.o -MD
 gcc -Wall -Wextra -Werror  -c ft_memmove.c -o ft_memmove.o -MD
 gcc -Wall -Wextra -Werror  -c ft_memchr.c -o ft_memchr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_memcmp.c -o ft_memcmp.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strlen.c -o ft_strlen.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strlcpy.c -o ft_strlcpy.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_strlcat.c -o ft_strlcat.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_strchr.c -o ft_strchr.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_strnstr.c -o ft_strnstr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strrchr.c -o ft_strrchr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strncmp.c -o ft_strncmp.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_atoi.c -o ft_atoi.o -MD
 gcc -Wall -Wextra -Werror  -c ft_isalpha.c -o ft_isalpha.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_isdigit.c -o ft_isdigit.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_isalnum.c -o ft_isalnum.o -MD
 gcc -Wall -Wextra -Werror  -c ft_isascii.c -o ft_isascii.o -MD
 gcc -Wall -Wextra -Werror  -c ft_isprint.c -o ft_isprint.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_tolower.c -o ft_tolower.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_toupper.c -o ft_toupper.o -MD
 gcc -Wall -Wextra -Werror  -c ft_calloc.c -o ft_calloc.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strdup.c -o ft_strdup.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_substr.c -o ft_substr.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_strjoin.c -o ft_strjoin.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strtrim.c -o ft_strtrim.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_split.c -o ft_split.o -MD
 gcc -Wall -Wextra -Werror  -c ft_itoa.c -o ft_itoa.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_strmapi.c -o ft_strmapi.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_putchar_fd.c -o ft_putchar_fd.o -MD
 gcc -Wall -Wextra -Werror  -c ft_putnbr_fd.c -o ft_putnbr_fd.o -MD
 gcc -Wall -Wextra -Werror  -c ft_putstr_fd.c -o ft_putstr_fd.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_putendl_fd.c -o ft_putendl_fd.o -MD
+ 
 ar rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strnstr.o ft_strrchr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_tolower.o ft_toupper.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_putendl_fd.o
 make[1]: Leaving directory `/Users/dwulfe/my_cube/libs/libft'
- 
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libs/libft
  
 make[1]: Entering directory `/Users/dwulfe/my_cube/libs/libft'
@@ -63,29 +61,29 @@ gcc -Wall -Wextra -Werror  -c ft_memcpy.c -o ft_memcpy.o -MD
  
 gcc -Wall -Wextra -Werror  -c ft_memccpy.c -o ft_memccpy.o -MD
 gcc -Wall -Wextra -Werror  -c ft_memmove.c -o ft_memmove.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_memchr.c -o ft_memchr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_memcmp.c -o ft_memcmp.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strlen.c -o ft_strlen.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strlcpy.c -o ft_strlcpy.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strlcat.c -o ft_strlcat.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_strchr.c -o ft_strchr.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_strnstr.c -o ft_strnstr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strrchr.c -o ft_strrchr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strncmp.c -o ft_strncmp.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_atoi.c -o ft_atoi.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_isalpha.c -o ft_isalpha.o -MD
 gcc -Wall -Wextra -Werror  -c ft_isdigit.c -o ft_isdigit.o -MD
 gcc -Wall -Wextra -Werror  -c ft_isalnum.c -o ft_isalnum.o -MD
 gcc -Wall -Wextra -Werror  -c ft_isascii.c -o ft_isascii.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_isprint.c -o ft_isprint.o -MD
 gcc -Wall -Wextra -Werror  -c ft_tolower.c -o ft_tolower.o -MD
 gcc -Wall -Wextra -Werror  -c ft_toupper.c -o ft_toupper.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_calloc.c -o ft_calloc.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strdup.c -o ft_strdup.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_substr.c -o ft_substr.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strjoin.c -o ft_strjoin.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strtrim.c -o ft_strtrim.o -MD
@@ -93,12 +91,28 @@ gcc -Wall -Wextra -Werror  -c ft_split.c -o ft_split.o -MD
 gcc -Wall -Wextra -Werror  -c ft_itoa.c -o ft_itoa.o -MD
 gcc -Wall -Wextra -Werror  -c ft_strmapi.c -o ft_strmapi.o -MD
 gcc -Wall -Wextra -Werror  -c ft_putchar_fd.c -o ft_putchar_fd.o -MD
+ 
 gcc -Wall -Wextra -Werror  -c ft_putnbr_fd.c -o ft_putnbr_fd.o -MD
 gcc -Wall -Wextra -Werror  -c ft_putstr_fd.c -o ft_putstr_fd.o -MD
- 
 gcc -Wall -Wextra -Werror  -c ft_putendl_fd.c -o ft_putendl_fd.o -MD
 ar rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strnstr.o ft_strrchr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_tolower.o ft_toupper.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_putendl_fd.o
 make[1]: Leaving directory `/Users/dwulfe/my_cube/libs/libft'
+cd ./libs/minilibx_opengl/ && /Applications/Xcode.app/Contents/Developer/usr/bin/make
+ 
+make[1]: Entering directory `/Users/dwulfe/my_cube/libs/minilibx_opengl'
+cc -O2 -DSTRINGPUTX11   -c -o mlx_shaders.o mlx_shaders.c
+ 
+cc -O2 -DSTRINGPUTX11   -c -o mlx_new_window.o mlx_new_window.m
+cc -O2 -DSTRINGPUTX11   -c -o mlx_init_loop.o mlx_init_loop.m
+cc -O2 -DSTRINGPUTX11   -c -o mlx_new_image.o mlx_new_image.m
+cc -O2 -DSTRINGPUTX11   -c -o mlx_xpm.o mlx_xpm.c
+ 
+cc -O2 -DSTRINGPUTX11   -c -o mlx_int_str_to_wordtab.o mlx_int_str_to_wordtab.c
+cc -O2 -DSTRINGPUTX11   -c -o mlx_png.o mlx_png.c
+cc -O2 -DSTRINGPUTX11   -c -o mlx_mouse.o mlx_mouse.m
+ar -r libmlx.a mlx_shaders.o mlx_new_window.o mlx_init_loop.o mlx_new_image.o mlx_xpm.o mlx_int_str_to_wordtab.o mlx_png.o mlx_mouse.o
+ranlib libmlx.a
+make[1]: Leaving directory `/Users/dwulfe/my_cube/libs/minilibx_opengl'
  
 cd ./libs/minilibx_opengl/ && /Applications/Xcode.app/Contents/Developer/usr/bin/make
  
@@ -125,8 +139,8 @@ cc -O2 -DSTRINGPUTX11   -c -o mlx_shaders.o mlx_shaders.c
 cc -O2 -DSTRINGPUTX11   -c -o mlx_new_window.o mlx_new_window.m
 cc -O2 -DSTRINGPUTX11   -c -o mlx_init_loop.o mlx_init_loop.m
 cc -O2 -DSTRINGPUTX11   -c -o mlx_new_image.o mlx_new_image.m
- 
 cc -O2 -DSTRINGPUTX11   -c -o mlx_xpm.o mlx_xpm.c
+ 
 cc -O2 -DSTRINGPUTX11   -c -o mlx_int_str_to_wordtab.o mlx_int_str_to_wordtab.c
 cc -O2 -DSTRINGPUTX11   -c -o mlx_png.o mlx_png.c
 cc -O2 -DSTRINGPUTX11   -c -o mlx_mouse.o mlx_mouse.m
@@ -166,7 +180,6 @@ cc -O2 -DSTRINGPUTX11   -c -o mlx_mouse.o mlx_mouse.m
 ar -r libmlx.a mlx_shaders.o mlx_new_window.o mlx_init_loop.o mlx_new_image.o mlx_xpm.o mlx_int_str_to_wordtab.o mlx_png.o mlx_mouse.o
 ranlib libmlx.a
 make[1]: Leaving directory `/Users/dwulfe/my_cube/libs/minilibx_opengl'
- 
 cd ./libs/minilibx_opengl/ && /Applications/Xcode.app/Contents/Developer/usr/bin/make
  
 make[1]: Entering directory `/Users/dwulfe/my_cube/libs/minilibx_opengl'
@@ -211,7 +224,6 @@ gcc -DPWD="\"/Users/dwulfe/my_cube/parser\"" -g -c parser.c -o parser.o
  
 ar rcs libparser.a check_map.o check_map_strings.o check_params.o cleaning.o exec.o funcs.o gnl.o inits.o parse_colors.o parse_textures.o parser.o
 make[1]: Leaving directory `/Users/dwulfe/my_cube/parser'
- 
 /Applications/Xcode.app/Contents/Developer/usr/bin/make lib -C ./parser
  
 make[1]: Entering directory `/Users/dwulfe/my_cube/parser'
@@ -237,7 +249,6 @@ gcc -DPWD="\"/Users/dwulfe/my_cube/parser\"" -g -c parse_textures.c -o parse_tex
  
 gcc -DPWD="\"/Users/dwulfe/my_cube/parser\"" -g -c parser.c -o parser.o
 ar rcs libparser.a check_map.o check_map_strings.o check_params.o cleaning.o exec.o funcs.o gnl.o inits.o parse_colors.o parse_textures.o parser.o
- 
 make[1]: Leaving directory `/Users/dwulfe/my_cube/parser'
  
 /Applications/Xcode.app/Contents/Developer/usr/bin/make lib -C ./parser
@@ -265,13 +276,10 @@ gcc -DPWD="\"/Users/dwulfe/my_cube/parser\"" -g -c parse_textures.c -o parse_tex
  
 gcc -DPWD="\"/Users/dwulfe/my_cube/parser\"" -g -c parser.c -o parser.o
 ar rcs libparser.a check_map.o check_map_strings.o check_params.o cleaning.o exec.o funcs.o gnl.o inits.o parse_colors.o parse_textures.o parser.o
- 
 make[1]: Leaving directory `/Users/dwulfe/my_cube/parser'
- 
 gcc -Wall -Wextra -Werror -g -c main.c -o ./objs/main.o
- 
+gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/_render_.c -o objs/_render_.o
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/colors_chars.c -o objs/colors_chars.o
- 
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/colors_int.c -o objs/colors_int.o
  
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/doors.c -o objs/doors.o
@@ -286,13 +294,15 @@ gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c ren
  
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/key_update.c -o objs/key_update.o
  
+gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/loading_images.c -o objs/loading_images.o
+ 
+gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/loading_lib.c -o objs/loading_lib.o
+ 
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/minimap.c -o objs/minimap.o
  
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/mouse.c -o objs/mouse.o
  
-gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/prerender.c -o objs/prerender.o
- 
-gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/render.c -o objs/render.o
+gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/scenario.c -o objs/scenario.o
  
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/sprites.c -o objs/sprites.o
  
@@ -301,7 +311,6 @@ gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c ren
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/walls.c -o objs/walls.o
  
 gcc -Wall -Wextra -Werror  -g -DPWD="\"/Users/dwulfe/my_cube\"" -DBONUS=1 -c render/srcs/weapon.c -o objs/weapon.o
-gcc -Wall -Wextra -Werror -g -fsanitize=address  ./objs/main.o ./objs/colors_chars.o ./objs/colors_int.o ./objs/doors.o ./objs/draw.o ./objs/error.o ./objs/events.o ./objs/floor_ceiling.o ./objs/key_update.o ./objs/minimap.o ./objs/mouse.o ./objs/prerender.o ./objs/render.o ./objs/sprites.o ./objs/textures.o ./objs/walls.o ./objs/weapon.o -o Cub3d -L./parser/ -lparser -I./parser -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit -L./libs/libft -lft
- 
+gcc -Wall -Wextra -Werror -g -fsanitize=address  ./objs/main.o ./objs/_render_.o ./objs/colors_chars.o ./objs/colors_int.o ./objs/doors.o ./objs/draw.o ./objs/error.o ./objs/events.o ./objs/floor_ceiling.o ./objs/key_update.o ./objs/loading_images.o ./objs/loading_lib.o ./objs/minimap.o ./objs/mouse.o ./objs/scenario.o ./objs/sprites.o ./objs/textures.o ./objs/walls.o ./objs/weapon.o -o Cub3d -L./parser/ -lparser -I./parser -L./libs/minilibx_opengl -lmlx -framework OpenGL -lz -framework AppKit -L./libs/libft -lft
 make: Leaving directory `/Users/dwulfe/my_cube'
  

@@ -20,7 +20,7 @@ ifeq ($(SYSTEM), Linux)
 MLXLIB			= -L./libs/minilibx_linux -lmlx_Linux -lXext -lX11 -lm -lz
 MLXDIR			= ./libs/minilibx_linux/
 else ifeq ($(SYSTEM), Darwin)
-MLXLIB			= -L./libs/minilibx_opengl -lmlx -framework OpenGL -framework AppKit
+MLXLIB			= -L./libs/minilibx_opengl -lmlx -framework OpenGL -lz -framework AppKit
 MLXDIR			= ./libs/minilibx_opengl/
 endif
 LIB				= -L./libs/libft -lft

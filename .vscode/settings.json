@@ -30,7 +30,8 @@
         "tuple": "cpp",
         "unordered_map": "cpp",
         "utility": "cpp",
-        "atomic": "cpp"
+        "atomic": "cpp",
+        "zlib.h": "c"
     },
     "makefile.launchConfigurations": [
         {

@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:07:38 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/19 15:31:36 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/20 15:46:20 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ void	error_message(char *message);
 void	draw_weapon_animation(t_data *d);
 void	load_weapons(t_data *d);
 void    set_start_ammunition(t_data *d);
+void	load_textures_additional(t_data *d);
+void	save_image(t_data *data,int **text, char *path, t_img *img);
+void	load_array_images(t_weapon *weapon, void *mlx_ptr, char **path, int i);
 
 #endif

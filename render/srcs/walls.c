@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 21:43:52 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/16 22:30:01 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/20 20:20:36 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,8 @@ void	walls(t_data *d)
 			d->rc->txtr_num = 0;
 		else if (d->rc->side == 0 && d->rc->ray_dir_x > 0)
 			d->rc->txtr_num = 1;
+	
+			
 		//d->rc->txtr_num = d->rc->map[d->rc->map_y][d->rc->map_x];
 
 		// calculate value of wallX
@@ -283,11 +285,16 @@ void	walls(t_data *d)
 			d->rc->txtr_x = TXTR_W - d->rc->txtr_x - 1;
 		if (d->rc->side == 1 && d->rc->ray_dir_y < 0)
 			d->rc->txtr_x = TXTR_W - d->rc->txtr_x - 1;
-
+	
 		// How much to increase the texture coordinate perscreen pixel
 		d->rc->step = 1.0 * TXTR_H / d->rc->line_height;
 		// Starting texture coordinate
 		d->rc->txtr_pos = (d->rc->draw_start - WIN_Y / 2 + d->rc->line_height / 2) * d->rc->step;
+		// if (d->rc->map[d->rc->map_x][d->rc->map_y] == 'D')
+		// {
+		// 	d->rc->txtr_num = 4;
+		// 	d->rc->txtr_x = 
+		// }
 		int y = d->rc->draw_start;
 		while (y < d->rc->draw_end)
 		{

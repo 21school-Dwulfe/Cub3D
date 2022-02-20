@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 20:07:08 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/19 15:45:32 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/20 18:16:18 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 # define MALLOC_ERROR 103
 # define READ_ERROR 104
 # define COMMON_ERROR 105
-# define WEAPON_COUNT 12
-
+# define WEAPON_COUNT 9
 
 # ifdef __APPLE__
 # define W 13
@@ -148,13 +147,13 @@ typedef struct s_img
 
 typedef struct s_weapon
 {
-	int			first;
-	int			active;
-	int			animation_end;
-	int			start;
-	int			step;
-	int			one_side;
-	int			num_img;
+	short		first;
+	short		active;
+	short		animation_end;
+	short		start;
+	short		step;
+	short		inFOV;
+	short		num_img;
 	int			realoding;
 	int			changing;
 	t_img		*img;
@@ -172,7 +171,7 @@ typedef struct s_data
 	void				*mlx_win; 				// ptr win
 	t_img				*mlx_image;
 	int					txt_count;
-	int					*textures[5];
+	int					*textures[6];
 	long				curr_time;
 	long				last_mouse_rotation;
 	long				last_mouse_left;

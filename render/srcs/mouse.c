@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:09:54 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/19 12:23:54 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/20 15:07:31 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	mouse_rotation(int x,int y, void *p)
 	}
 	if (x < WIN_X * 0.3 || x > WIN_X * 0.7 || y < WIN_Y * 0.3 || y > WIN_Y * 0.7)
 	{
-		mlx_mouse_move(d->mlx, d->mlx_win, WIN_X / 2, WIN_Y / 2);
+		mlx_mouse_move(d->mlx_win, WIN_X / 2, WIN_Y / 2);
 		d->rc->x = WIN_X / 2;
 	}
 	d->rc->x = x;

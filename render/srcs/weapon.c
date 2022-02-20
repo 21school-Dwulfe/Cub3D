@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 13:02:03 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/19 17:23:14 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/20 18:28:47 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void	draw_weapon(t_data *d, t_img *weapon, int partial)
 		x = 0;
 		while (x < weapon->img_width)
 		{
-			if (weapon->addr[y * weapon->img_width + x] != 0xFFFFFF)
+			if (weapon->addr[y * weapon->img_width + x] != 0xFFFFFF
+				&& weapon->addr[y * weapon->img_width + x] >= 0)
 			{
 				increase[0] = 1;
-				while (increase[0] <= 3)
+				while (increase[0] <= increase[2])
 				{
 					increase[1] = 1;
-					while (increase[1] <= 3)
+					while (increase[1] <= increase[2])
 					{
 						d->buff[y + y_offset + increase[0] + y][x + x_offset + increase[1] + x] = weapon->addr[y * weapon->img_width + x];
 						increase[1]++;
@@ -70,6 +71,7 @@ int	calc_change_weapon(t_data *d)
 		{
 			partial = 0;
 			result = 0;
+			d->act_weapon->changing = 0;
 			return (0);
 		}
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   _render_.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 23:16:32 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/19 13:58:58 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/20 15:34:49 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ int	render(t_data *data)
 	if (BONUS)
 	{	
 		load_weapons(data);
-		//load_textures_additional();
+		load_textures_additional(data);
 		set_start_ammunition(data);
 		mlx_hook(data->mlx_win, 6, (1L<<6), mouse_rotation, data);
 		mlx_hook(data->mlx_win, 4, (1L<<2), mouse_buttons_down, data);
