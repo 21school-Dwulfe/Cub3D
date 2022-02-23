@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:57:31 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/17 20:39:01 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:01:20 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,37 @@ void	draw_square_minicard(t_data *data, int *xy, int color, int size)
 	}
 }
 
-void	draw_minicard_field(t_data *d)
+void	var_init(int *y, int *color)
 {
-	int	x;
-	int	y;
-	int	color[2];
-	int xy[2];
-	int	xx;
-	int yy;
-	
-	y = 0;
+	*y = 0;
 	color[0] = create_trgb(119, 136, 153);
 	color[1] = create_trgb(0, 255, 0);
-	while (d->parser->map[y])
+}
+
+void	draw_minicard_field(t_data *d)
+{
+	int	i_j[2];
+	int	color[2];
+	int	xy[2];
+	int	xx;
+	int	yy;
+
+	var_init(&i_j[1], color);
+	while (d->parser->map[i_j[1]])
 	{
-		x = 0;
-		while (d->parser->map[y][x])
+		i_j[0] = 0;
+		while (d->parser->map[i_j[1]][i_j[0]])
 		{
-			xy[0] = x;
-			xy[1] = y;
-			if (d->parser->map[y][x] == '1')
+			xy[0] = i_j[0];
+			xy[1] = i_j[1];
+			if (d->parser->map[i_j[1]][i_j[0]] == '1')
 				draw_square_minicard(d, xy, color[0], 10);
-			xx =  (int)d->rc->pos_y;
+			xx = (int)d->rc->pos_y;
 			yy = (int)d->rc->pos_x;
-			if (x ==  xx && y == yy)
+			if (i_j[0] == xx && i_j[1] == yy)
 				draw_square_minicard(d, xy, color[1], 10);
-			x++;
+			i_j[0]++;
 		}
-		y++;
+		i_j[1]++;
 	}
 }

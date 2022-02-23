@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:16:04 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/15 14:25:51 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:04:00 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 
 # include "../libs/include.h"
 # include "../includes/structures.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdio.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 int		get_next_line(int fd, char **line, int ret);
 int		ft_atoi_rgb(char *str);
 void	ft_error(int key);
 
-// void	init(t_parser **data, t_parser **parser, t_txs **txs, t_colors **colors);
-// void	mlx_data_init(t_parser *data);
 void	rgb_init(t_rgb **rgb);
-// void	init_params(t_params **params);
-
 int		check_params(t_parser *data, char **file);
 int		collect_all(t_parser *data);
 

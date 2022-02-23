@@ -6,11 +6,11 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:06:43 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/18 15:16:57 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 19:15:41 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../render.h"
+#include "../render.h"
 
 void	error_message(char *message)
 {

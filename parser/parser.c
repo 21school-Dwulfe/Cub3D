@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/03 13:17:29 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:04:57 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ void	get_map(int i, int j, char **file, t_parser *data)
 
 int	find_map(int *i, char **file, t_parser *data)
 {
-	//t_params	*params;
 	int			j;
 
-	// params = malloc(sizeof(t_params));
-	// init_params(&params);
-	// data->params = params;
 	while (file[*i])
 	{
 		j = 0;
@@ -65,28 +61,28 @@ int	find_map(int *i, char **file, t_parser *data)
 	return (0);
 }
 
-void	parse_file(t_parser *data, char **f, int *i, int *j)
+void	parse_file(t_parser *d, char **f, int *i, int *j)
 {
 	while (f[++(*i)])
 	{
 		*j = 0;
-		while (f[*i][*j] && collect_all(data))
+		while (f[*i][*j] && collect_all(d))
 		{
 			if_space(f[*i], j);
-			if (f[*i][*j] == 'N' && f[*i][(*j) + 1] == 'O' && !data->paths->no)
-				get_texts(j, f[*i], data, "NO");
-			else if (f[*i][*j] == 'S' && f[*i][*j + 1] == 'O' && !data->paths->so)
-				get_texts(j, f[*i], data, "SO");
-			else if (f[*i][*j] == 'E' && f[*i][*j + 1] == 'A' && !data->paths->ea)
-				get_texts(j, f[*i], data, "EA");
-			else if (f[*i][*j] == 'W' && f[*i][*j + 1] == 'E' && !data->paths->we)
-				get_texts(j, f[*i], data, "WE");
-			else if (f[*i][*j] == 'F' && !data->colors->floor)
-				get_colors(j, f[*i], data, 'F');
-			else if (f[*i][*j] == 'C' && !data->colors->cell)
-				get_colors(j, f[*i], data, 'C');
+			if (f[*i][*j] == 'N' && f[*i][(*j) + 1] == 'O' && !d->paths->no)
+				get_texts(j, f[*i], d, "NO");
+			else if (f[*i][*j] == 'S' && f[*i][*j + 1] == 'O' && !d->paths->so)
+				get_texts(j, f[*i], d, "SO");
+			else if (f[*i][*j] == 'E' && f[*i][*j + 1] == 'A' && !d->paths->ea)
+				get_texts(j, f[*i], d, "EA");
+			else if (f[*i][*j] == 'W' && f[*i][*j + 1] == 'E' && !d->paths->we)
+				get_texts(j, f[*i], d, "WE");
+			else if (f[*i][*j] == 'F' && !d->colors->floor)
+				get_colors(j, f[*i], d, 'F');
+			else if (f[*i][*j] == 'C' && !d->colors->cell)
+				get_colors(j, f[*i], d, 'C');
 			else if (f[*i][*j] == '1')
-				find_map(i, f, data);
+				find_map(i, f, d);
 			else
 				ft_error(FILE_ERROR);
 		}

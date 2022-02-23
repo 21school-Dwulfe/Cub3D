@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/16 21:44:19 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 20:03:17 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,7 @@ int	check_string(char *str, int y, t_parser *data)
 	}
 	return (0);
 }
-// int	check_string(char *str, int j, t_parser *data)
-// {
-// 	int	i;
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == '1' || str[i] == '0' || str[i] == 'N' || str[i] == 'S'
-// 			|| str[i] == 'E' || str[i] == 'W' || str[i] == 'C' || str[i] == 'X' 
-// 			|| str[i] == 'D' || str[i] == ' ')
-// 			get_char(str[i], data, j, i);
-// 		else
-// 			ft_error(MAP_ERROR);
-// 		i++;
-// 	}
-// 	return (0);
-// } 
+
 static int	check_left(char *str, int i)
 {
 	while (--i)
@@ -121,7 +106,6 @@ int	check_walls(char *str, int i)
 	if (!len && i == ft_strlen(str))
 		return (0);
 	tmp = ft_substr(str, i, len - i);
-	// printf("%s\n", tmp);
 	if (!tmp)
 		ft_error(MALLOC_ERROR);
 	check_holes(tmp);

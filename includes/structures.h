@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 20:07:08 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/20 18:16:18 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 19:53:48 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,29 @@
 # define READ_ERROR 104
 # define COMMON_ERROR 105
 # define WEAPON_COUNT 9
+# define ENEMIES_COUNT 20
 
 # ifdef __APPLE__
-# define W 13
-# define A 0
-# define S 1
-# define D 2
-# define LEFT 123
-# define RIGHT 124
-# define ESC 53
-# define WEAPON_BEGINS 18
-# define WEAPON_ENDS 27
+#  define W 13
+#  define A 0
+#  define S 1
+#  define D 2
+#  define LEFT 123
+#  define RIGHT 124
+#  define ESC 53
+#  define WEAPON_BEGINS 18
+#  define WEAPON_ENDS 27
+
 # elif __linux__
-# define W 119
-# define A 97
-# define S 115
-# define D 100
-# define LEFT 65361
-# define RIGHT 65363
-# define ESC 65307
-# define WEAPON_BEGINS 49
-# define WEAPON_ENDS 57
+#  define W 119
+#  define A 97
+#  define S 115
+#  define D 100
+#  define LEFT 65361
+#  define RIGHT 65363
+#  define ESC 65307
+#  define WEAPON_BEGINS 49
+#  define WEAPON_ENDS 57
 # endif
 
 # ifndef BUFFER_SIZE
@@ -73,6 +75,12 @@ typedef struct s_txs
 	char		*we;
 	char		*ea;
 }				t_txs;
+
+typedef struct s_pair
+{
+	double		first;
+	int			second;
+}				t_pair;
 
 typedef struct s_parser
 {
@@ -131,12 +139,13 @@ typedef struct s_raycaster
 	double		rot_speed;
 	double		plane_x;		
 	double		plane_y;
+	int			z_buffer[1024];
 }				t_raycaster;
 
 typedef struct s_img
 {
 	void				*img;	
-	int					*addr; 					// data array of colors in from matrix
+	int					*addr;
 	int					bits_per_pixel;
 	int					size_l;
 	int					line_length;
@@ -152,23 +161,31 @@ typedef struct s_weapon
 	short		animation_end;
 	short		start;
 	short		step;
-	short		inFOV;
+	short		in_fov;
 	short		num_img;
 	int			realoding;
 	int			changing;
 	t_img		*img;
 }				t_weapon;
 
+typedef struct s_sprite
+{
+	short		is_enemy;
+	int			texture;
+	double		x;
+	double		y;
+}				t_sprite;
+
 typedef struct s_data
 {
-	short				key[512];				// keys
+	short				key[512];
 	short				key_l;
 	short				key_r;
 	short				mouse_left;
 	short				mouse_right;
 	int					buff[WIN_Y][WIN_X];
-	void				*mlx; 					// ptr mlx
-	void				*mlx_win; 				// ptr win
+	void				*mlx;
+	void				*mlx_win;
 	t_img				*mlx_image;
 	int					txt_count;
 	int					*textures[6];
@@ -177,9 +194,38 @@ typedef struct s_data
 	long				last_mouse_left;
 	long				last_mouse_right_button;
 	int					available_weapon[9];
-	t_weapon			*act_weapon;
-	t_weapon			weapon[WEAPON_COUNT]; 
-	t_img				*txtr[20];
+	int					num_sprites;
+	int					spr_order[20];
+	double				sprite_distance[20];
+	struct				s_sprites_draw
+	{
+		double			sprite_x;
+		double			sprite_y;
+		double			inv_det;
+		double			transform_x;
+		double			transform_y;
+		int				sprite_screen_x;
+		int				v_move_screen;
+		int				draw_start_y;
+		int				draw_start_x;
+		int				draw_end_y;
+		int				draw_end_x;
+		int				spr_width;
+		int				sprite_height;
+		int				stripe;
+		int				const_tex_width;
+		int				const_tex_height;
+		int				tex_x;
+		int				tex_y;
+		int				d;
+		int				color;
+
+	}					sp;
+	int					num_enemies;
+	t_sprite			sprite[20];
+	t_weapon			*act_w;
+	t_weapon			weapon[WEAPON_COUNT];
+	t_img				txtr[20];
 	t_parser			*parser;
 	t_raycaster			*rc;
 }						t_data;

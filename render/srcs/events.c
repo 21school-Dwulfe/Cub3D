@@ -6,14 +6,13 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 15:49:12 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/19 15:30:28 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 19:49:28 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../render.h"
 
-//(*f)(int button, int x, int y, void *param);
-int mouse_action(int x, int y, void *d)
+int	mouse_action(int x, int y, void *d)
 {
 	t_data	*data;
 
@@ -21,29 +20,24 @@ int mouse_action(int x, int y, void *d)
 	(void)y;
 	(void)x;
 	(void)data;
-	// if (data && x < WIN_X / 2)
-	// {
-	// 	rotate_screen_to_left(data);
-	// }
-	// else if (data && x > WIN_X / 2)
-	// 	rotate_screen_to_right(data);	
 	printf("x=%d y=%d\n", x, y);
 	return (0);
 }
 
-int button_pressed(int key, void *d)// t_data *data)
+int	button_pressed(int key, void *d)
 {
-	t_data *data;
-	
+	t_data	*data;
+
 	data = (t_data *)d;
 	if (key == ESC)
 		exit(0);
-	if (key == W || key == S || key == A || key == D || key == LEFT || key == RIGHT)
+	if (key == W || key == S || key == A || key == D || key == LEFT
+		|| key == RIGHT)
 	{
 		if (key == LEFT)
 			data->key_l = 1;
 		else if (key == RIGHT)
-		 	data->key_r = 1;
+			data->key_r = 1;
 		else
 			data->key[key] = 1;
 	}
@@ -53,19 +47,19 @@ int button_pressed(int key, void *d)// t_data *data)
 
 void	weapon_change(t_data *d, int key)
 {
-	int num;
+	int	num;
 
 	num = key - WEAPON_BEGINS;
 	if (key - WEAPON_BEGINS < WEAPON_COUNT && d->available_weapon[num] != 0)
 	{
-		d->act_weapon = &d->weapon[key - WEAPON_BEGINS];
-		d->act_weapon->changing = d->curr_time;
+		d->act_w = &d->weapon[key - WEAPON_BEGINS];
+		d->act_w->changing = d->curr_time;
 	}
 }
 
-int button_release(int key, void *d)
+int	button_release(int key, void *d)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)d;
 	if (key == ESC)
@@ -76,7 +70,7 @@ int button_release(int key, void *d)
 		if (key == LEFT)
 			data->key_l = 0;
 		else if (key == RIGHT)
-		 	data->key_r = 0;
+			data->key_r = 0;
 		else
 			data->key[key] = 0;
 	}
@@ -86,7 +80,7 @@ int button_release(int key, void *d)
 	return (key);
 }
 
-int ft_close(int key, void *d)
+int	ft_close(int key, void *d)
 {
 	(void)d;
 	(void)key;

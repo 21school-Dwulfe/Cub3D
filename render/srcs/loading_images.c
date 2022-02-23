@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:30:28 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/20 20:09:49 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/23 18:48:19 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	load_textures_additional(t_data *d)
 {
-	(void)d;
+	char	*array[4];
+
+	array[0] = "textures/enemies/guard/attack_1.png";
+	load_image(&d->txtr[0], d->mlx, array[0]);
+	d->num_sprites = 2;
 }
 
 void	load_textures_mandatory(t_data *d)
@@ -31,8 +35,8 @@ void	load_textures_mandatory(t_data *d)
 
 void	load_weapons(t_data *d)
 {
-	char *array[14];
-	
+	char	*array[14];
+
 	array[0] = "textures/weapon/pistol_1.xpm";
 	array[1] = "textures/weapon/pistol_2.xpm";
 	array[2] = "textures/weapon/pistol_3.xpm";
