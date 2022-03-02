@@ -6,11 +6,11 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:07:03 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 19:13:43 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/03/02 11:36:43 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/main.h"
+#include "../includes/main.h"
 
 void	init(t_data *data, t_parser *parser, t_txs *txs, t_colors *colors)
 {
@@ -48,8 +48,8 @@ int	main(int argc, char **argv)
 	{
 		if (check(argv[1]))
 			ft_error(COMMON_ERROR);
-		render_init(&data);
 		parse(&parser, argv[1]);
+		render_init(&data);
 		render(&data);
 	}
 	else

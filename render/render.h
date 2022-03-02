@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:07:38 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 19:56:40 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/24 15:57:04 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../includes/structures.h"
 
 void	render_init(t_data *data);
-int		render(t_data *data);
+int		render(t_data *data);	
 void	load_textures_mandatory(t_data *data);
 void	define_player_position(t_data *d);
 int		create_trgb(int r, int g, int b);

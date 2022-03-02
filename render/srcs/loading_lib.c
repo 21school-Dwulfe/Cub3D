@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:30:18 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 18:54:34 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/03/02 15:31:24 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void	load_image(t_img *img, void *mlx_ptr, char *path)
 {
-	if (!ft_strncmp(path + ft_strlen(path) - 4, ".png", 4))
-		img->img = mlx_png_file_to_image(mlx_ptr, path,
-				&img->img_width, &img->img_height);
-	else if (!ft_strncmp(path + ft_strlen(path) - 4, ".xpm", 4))
-		img->img = mlx_xpm_file_to_image(mlx_ptr, path,
-				&img->img_width, &img->img_height);
+	img->img = mlx_xpm_file_to_image(mlx_ptr, path,
+			&img->img_width, &img->img_height);
 	if (!img->img)
 	{
 		error_message("Error : ");

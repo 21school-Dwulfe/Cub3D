@@ -1,3 +1,4 @@
+  
 APP 			= Cub3d
 
 SYSTEM 			:= $(shell uname)
@@ -7,12 +8,12 @@ HEADERDIR		:= includes
 PWD				:= $(shell pwd)
 
 SRCS 			:= $(shell find $(SRCDIR) -name '*.c')
-OBJS			:= ${addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o))}
+OBJS_2			:= ${addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o))}
 HEADERS			:= ${shell find ./libs -name '*.h'}
 SYSTEM			=  $(shell uname)
 
 CFLAGS			= -Wall -Wextra -Werror
-DEBUG			= -g -fsanitize=address
+DEBUG			= -g  #-fsanitize=address
 OPTIM			= -O2
 INCLUDES		= -I./includes
 CC				= gcc
@@ -28,24 +29,26 @@ PARSERLIB		= -L./parser/ -lparser -I./parser
 MAIN			= ./objs/main.o
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
-		$(CC) $(CFLAGS)  -g -DPWD="\"$(shell pwd)\"" -DBONUS=1 -c $< -o $@
+		$(CC) $(CFLAGS)  -g -DPWD="\"$(shell pwd)\"" -DBONUS=0 -c $< -o $@
 
-${APP} 	: Makefile buildrepo $(LIB)  $(MLXLIB) $(PARSERLIB) $(MAIN) $(OBJS)
-		$(CC) $(CFLAGS) $(DEBUG)  $(MAIN) $(OBJS) -o $(APP) $(PARSERLIB) $(MLXLIB) $(LIB)
-# gcc main.c render/srcs/*.c -DBONUS=0 -DPWD="\"$(pwd)\"" -L./parser -lparser -L./libs/minilibx_linux -lmlx_Linux -lXext -lX11 -lm -lz -L./libs/libft -lft
+${APP} 	: Makefile $(OBJS_2)
+		$(CC) $(CFLAGS) $(DEBUG)  $(OBJS_2) $(PARSERLIB) $(MLXLIB) $(LIB) -o $(APP) 
+
 all : $(APP)
 
 print : 
-	echo $(MLXLIB)
+	echo $(OBJS_2)
 
-buildrepo :
+ $(OBJS_2) : |  parser mlx $(OBJDIR) 
+
+$(OBJDIR) :  
 		mkdir -p  $(OBJDIR)
-
-$(MLXLIB) :
+		
+mlx :
 	cd $(MLXDIR) && $(MAKE)
 
-$(PARSERLIB):
-	$(MAKE) lib -C ./parser
+parser :
+	$(MAKE) -C ./parser
 
 $(LIB) :
 	$(MAKE) -C ./libs/libft
@@ -53,20 +56,8 @@ $(LIB) :
 $(MAIN) :
 	$(CC) $(CFLAGS) -g -c main.c -o $(MAIN)
 	
-# clean:
-# 			$(MAKE) clean -C $(LIBDIR) $(MLXDIR)
-# 			$(RM) $(OBJS) $(BOBJS)
-
-# fclean:		clean
-# 			make fclean -C $(LIBDIR).PHONY: all clean fclean re bonus buildrepo
-# 			$(RM) $(NAME) $(MLX)
-
 re:			fclean all
 
-# create 	: 
-# $(MAKE) lib -C  ./parser
-# $(MAKE) -C  ./libs/minilibx_mms
-# $(MAKE) -C  ./libs/libft
 clean	:
 	$(MAKE) clean -C  ./parser
 	$(MAKE) clean -C  ./libs/libft
@@ -79,5 +70,5 @@ fclean	:
 		$(MAKE) fclean -C  ./libs/libft
 		$(MAKE) clean -C  $(MLXDIR)
 
-.PHONY	: all clean fclean re bonus buildrepo print create
+.PHONY	: all clean fclean re bonus buildrepo print parser mlx
 	

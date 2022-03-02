@@ -1,7 +1,7 @@
 
-SRCS		= $(shell ls *.c)
+SRCS		= $(shell find . -name '*.c')
 
-OBJS		= $(SRCS:.c=.o)
+OBJS		:= $(SRCS:.c=.o)
 
 LIBDIR		= ../libs/Libft
 LIBFT_LIB	= $(LIBDIR)/libft.a
@@ -21,13 +21,15 @@ CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
 
-%.o: %.c	Makefile cub3D.h
+%.o: %.c	cub3D.h
 			$(CC) -DPWD="\"$(shell pwd)\"" -g -c $< -o $@
 #  $(MLX_START) 
-$(NAME):	$(LIBFT_LIB) $(MLX) $(OBJS)
-		$(CC) $(CFLAGS) -g -fsanitize=address $(LIB) $(OBJS) -o parser 
+$(NAME):	 $(OBJS)
+		ar rcs libparser.a $?
 
 all:		$(NAME)
+
+$(OBJS) : | $(LIBFT_LIB) 
 
 $(LIBFT_LIB): 
 	cd $(LIBDIR) && $(MAKE) && $(MAKE) bonus
@@ -44,9 +46,9 @@ fclean:		clean
 re:			fclean all
 
 print :
-	echo $(SRCS)
+	echo $(OBJS)
 	
-lib  :$(OBJS)
-			ar rcs libparser.a $?
+lib  : $(OBJS)
+		ar rcs libparser.a $?
 
 .PHONY:		all clean fclean re tools tools2 lib print

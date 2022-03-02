@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _render_.c                                         :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 23:16:32 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 19:57:13 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/25 13:29:51 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	raycasting_init(t_data *d, t_raycaster *rc)
 	d->rc->loop_counter = 0;
 	d->rc->move_speed = 0.06;
 	d->rc->rot_speed = 0.02;
-	d->rc->map = malloc(sizeof(int *) * 24);
 	d->rc->mouse_x = WIN_X / 2;
 	d->rc->mouse_y = WIN_Y / 2;
 	find_count_enemies(d);
@@ -92,20 +91,19 @@ int	render(t_data *data)
 	rc = (t_raycaster){};
 	raycasting_init(data, &rc);
 	define_player_position(data);
-	mlx_mouse_hide(data->mlx, data->mlx_win);
 	load_textures_mandatory(data);
 	if (BONUS)
 	{	
+		mlx_mouse_hide(data->mlx, data->mlx_win);
 		load_weapons(data);
-		load_textures_additional(data);
 		set_start_ammunition(data);
 		mlx_hook(data->mlx_win, 6, (1L << 6), mouse_rotation, data);
 		mlx_hook(data->mlx_win, 4, (1L << 2), mouse_buttons_down, data);
 		mlx_hook(data->mlx_win, 5, (1L << 2), mouse_buttons_up, data);
 	}
-	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, button_pressed, data);
+	mlx_hook(data->mlx_win, KEY_PRESS, (1L << 0), button_pressed, data);
 	mlx_key_hook(data->mlx_win, button_release, data);
-	mlx_hook(data->mlx_win, DestroyNotify, KeyPressMask, ft_close, data);
+	mlx_hook(data->mlx_win, DESTROYNOTIFY, (1L << 0), ft_close, data);
 	mlx_loop_hook(data->mlx, action, data);
 	mlx_loop(data->mlx);
 	exit(0);

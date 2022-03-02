@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 15:49:12 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 19:49:28 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/03/02 15:36:29 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	mouse_action(int x, int y, void *d)
 int	button_pressed(int key, void *d)
 {
 	t_data	*data;
+	int		i;
 
+	i = 0;
 	data = (t_data *)d;
 	if (key == ESC)
 		exit(0);
@@ -63,7 +65,10 @@ int	button_release(int key, void *d)
 
 	data = (t_data *)d;
 	if (key == ESC)
+	{
+		write(1, "Good bye!", 10);
 		exit(0);
+	}
 	if (key == W || key == S || key == A
 		|| key == D || key == LEFT || key == RIGHT)
 	{

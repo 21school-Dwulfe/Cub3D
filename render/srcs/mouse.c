@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:09:54 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 18:55:02 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/25 13:03:39 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int	mouse_buttons_down(int key, int x, int y, void *data)
 	(void)x;
 	(void)y;
 	(void)d;
-	if (key == 1)
+	if (key == 1 && !d->act_w->changing)
 		d->mouse_left = 1;
-	if (key == 2)
+	if (key == 2 && !d->act_w->changing)
 		d->mouse_left = 2;
 	printf("mouse keydown %d\n", key);
 	return (0);

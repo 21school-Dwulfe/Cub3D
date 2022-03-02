@@ -6,7 +6,7 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 13:40:45 by ebalgruu          #+#    #+#             */
-/*   Updated: 2022/02/23 20:03:17 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/24 17:18:18 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	check_string(char *str, int y, t_parser *data)
 	while (str[x])
 	{
 		if (str[x] == '1' || str[x] == '0' || str[x] == 'N' || str[x] == 'S'
-			|| str[x] == 'E' || str[x] == 'W' || str[x] == 'C' || str[x] == 'X'
-			|| str[x] == 'D' || str[x] == ' ')
+			|| str[x] == 'E' || str[x] == 'W' || str[x] == 'C' || str[x] == ' ')
 			get_char(str[x], data, x, y);
 		else
 			ft_error(MAP_ERROR);
@@ -103,7 +102,7 @@ int	check_walls(char *str, int i)
 		while (str[i] == ' ')
 			i++;
 	}
-	if (!len && i == ft_strlen(str))
+	if (!len && i == (int)ft_strlen(str))
 		return (0);
 	tmp = ft_substr(str, i, len - i);
 	if (!tmp)

@@ -6,20 +6,11 @@
 /*   By: dwulfe <dwulfe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:30:28 by dwulfe            #+#    #+#             */
-/*   Updated: 2022/02/23 18:48:19 by dwulfe           ###   ########.fr       */
+/*   Updated: 2022/02/25 13:04:25 by dwulfe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../render.h"
-
-void	load_textures_additional(t_data *d)
-{
-	char	*array[4];
-
-	array[0] = "textures/enemies/guard/attack_1.png";
-	load_image(&d->txtr[0], d->mlx, array[0]);
-	d->num_sprites = 2;
-}
 
 void	load_textures_mandatory(t_data *d)
 {
