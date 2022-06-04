@@ -2,7 +2,7 @@
 
 ### Just "make" and go!
 
-This is a group project that we did together with [Dwulfe](https://github.com/21school-Dwulfe)
+This is a group project that we did together with [Ebalgruu](https://github.com/mankofeman)
 
 Use of C, use of basic algorithms, information research etc.
 As a graphic design project, cub3D will enable me to improve my skills in these areas: windows, colors, events, fill shapes, etc.
